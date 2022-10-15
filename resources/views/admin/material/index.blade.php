@@ -14,7 +14,7 @@
         <div class="card">
 
             <div class="card-body">
-                <table class="table" id="datatable">
+                <table class="table table-bordered" id="datatable">
                     <thead>
                         <th>Code</th>
                         <th>Name</th>
