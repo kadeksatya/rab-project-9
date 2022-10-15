@@ -29,6 +29,28 @@
 
                 <!-- Content Wrapper START -->
                 <div class="main-content">
+                    <div class="page-header">
+                        <h2 class="header-title">{{$page_name}}</h2>
+                        <div class="header-sub-title">
+                            <nav class="breadcrumb breadcrumb-dash">
+                                <a href="#" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Home</a>
+                                <?php $link = "" ?>
+                                @for($i = 1; $i <= count(Request::segments()); $i++)
+                                    @if($i < count(Request::segments()) & $i > 0)
+                                        <?php $link .= Request::segment($i); ?>
+                                        @if ($i == 1)
+                                            <a href="<?= $link ?>" class="breadcrumb-item inactive">{{ ucwords(str_replace('-',' ',Request::segment($i)))}}</a>
+                                        @else
+                                            <a href="" class=" breadcrumb-item inactive">{{ ucwords(str_replace('-',' ',Request::segment($i)))}}</a>
+                                        @endif
+                                    @else
+                                        <a class="breadcrumb-item active">{{ucwords(str_replace('-',' ',Request::segment($i)))}}</a>
+                                    @endif
+                                @endfor
+                            </nav>
+                        </div>
+                    </div>
+                    <!-- Content goes Here -->
                     @yield('content')
                 </div>
                 <!-- Content Wrapper END -->
