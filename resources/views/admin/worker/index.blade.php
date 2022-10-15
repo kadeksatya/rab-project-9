@@ -5,8 +5,8 @@
     <div class="col-md-12 col-lg-12">
         @include('components.btnaction', [
             "item" => [
-                "url" => "/admin/masterdata/material",
-                "name" => "Add Material"
+                "url" => "/admin/masterdata/worker",
+                "name" => "Add Workers"
             ]
         ])
         <div class="card">
@@ -15,7 +15,7 @@
                     <thead>
                         <th>Code</th>
                         <th>Name</th>
-                        <th>Unit</th>
+                        <th>Worker Type</th>
                         <th>Price</th>
                         <th></th>
                     </thead>
@@ -30,8 +30,8 @@
                                     @include('components.btnactionlist', [
                                         "is_detail" => false,
                                         "url_detail" => "",
-                                        "url_edit" => "/admin/masterdata/material/".$item->id."/edit",
-                                        "url_delete" => "/admin/masterdata/material/".$item->id."/delete",
+                                        "url_edit" => "/admin/masterdata/worker/".$item->id."/edit",
+                                        "url_delete" => "/admin/masterdata/worker/".$item->id."/delete",
                                     ])
                                 </td>
                             </tr>                            
