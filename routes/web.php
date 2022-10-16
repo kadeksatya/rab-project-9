@@ -3,7 +3,11 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\RABController;
+use App\Http\Controllers\RABDetailController;
 use App\Http\Controllers\ToolController;
+use App\Http\Controllers\WorkController;
+use App\Http\Controllers\WorkDetailController;
 use App\Http\Controllers\WorkerController;
 use App\Http\Controllers\WorkTypeController;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +71,50 @@ Route::prefix('admin')->middleware('web')->group(function(){
         Route::put('worktype/{id}/update', [WorkTypeController::class, 'update']);
         Route::delete('worktype/{id}/delete', [WorkTypeController::class, 'destroy']);
 
+
+    });
+
+    Route::prefix('rab')->group(function(){
+
+        // Work Routes
+
+        Route::get('work', [WorkController::class, 'index']);
+        Route::post('work', [WorkController::class, 'store']);
+        Route::get('work/create', [WorkController::class, 'create']);
+        Route::get('work/{id}/edit', [WorkController::class, 'edit']);
+        Route::put('work/{id}/update', [WorkController::class, 'update']);
+        Route::delete('work/{id}/delete', [WorkController::class, 'destroy']);
+        Route::get('work/{id}/detail', [WorkController::class, 'show']);
+
+        Route::prefix('work')->group(function(){
+            Route::post('workdetail', [WorkDetailController::class, 'store']);
+            Route::get('workdetail/{id}/create', [WorkDetailController::class, 'create']);
+            Route::get('workdetail/{id}/edit', [WorkDetailController::class, 'edit']);
+            Route::put('workdetail/{id}/update', [WorkDetailController::class, 'update']);
+            Route::delete('workdetail/{id}/delete', [WorkDetailController::class, 'destroy']);
+        });
+
+
+
+        // RABS Routes
+
+        Route::get('rabs', [RABController::class, 'index']);
+        Route::post('rabs', [RABController::class, 'store']);
+        Route::get('rabs/create', [RABController::class, 'create']);
+        Route::get('rabs/{id}/edit', [RABController::class, 'edit']);
+        Route::put('rabs/{id}/update', [RABController::class, 'update']);
+        Route::delete('rabs/{id}/delete', [RABController::class, 'destroy']);
+        Route::get('rabs/{id}/detail', [RABController::class, 'show']);
+
+        Route::prefix('rabs')->group(function(){
+            Route::post('rabsdetail', [RABDetailController::class, 'store']);
+            Route::get('rabsdetail/{id}/create', [RABDetailController::class, 'create']);
+            Route::get('rabsdetail/{id}/edit', [RABDetailController::class, 'edit']);
+            Route::put('rabsdetail/{id}/update', [RABDetailController::class, 'update']);
+            Route::delete('rabsdetail/{id}/delete', [RABDetailController::class, 'destroy']);
+        });
+
+    
 
     });
 
