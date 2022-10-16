@@ -32,6 +32,22 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle" href="javascript:void(0);">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-pie-chart"></i>
+                                </span>
+                                <span class="title">RAB</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/admin/rab/work">Work</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/rab/tool">RAB</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
