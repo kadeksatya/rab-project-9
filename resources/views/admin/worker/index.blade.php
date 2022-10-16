@@ -2,20 +2,23 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12 col-lg-12">
+    
+    <div class="col-md-12">
         @include('components.btnaction', [
-            "item" => [
-                "url" => "/admin/masterdata/worker",
-                "name" => "Add Workers"
+            "item" => (Object)[
+                "url" => "/admin/masterdata/worker/create",
+                "name" => "Add Worker"
             ]
         ])
+
         <div class="card">
+
             <div class="card-body">
-                <table class="table" id="datatable">
+                <table class="table table-bordered" id="datatable">
                     <thead>
                         <th>Code</th>
                         <th>Name</th>
-                        <th>Worker Type</th>
+                        <th>Unit</th>
                         <th>Price</th>
                         <th></th>
                     </thead>

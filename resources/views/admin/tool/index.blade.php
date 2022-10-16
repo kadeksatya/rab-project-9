@@ -2,16 +2,19 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12 col-lg-12">
+    
+    <div class="col-md-12">
         @include('components.btnaction', [
-            "item" => [
-                "url" => "/admin/masterdata/tool",
+            "item" => (Object)[
+                "url" => "/admin/masterdata/tool/create",
                 "name" => "Add Tool"
             ]
         ])
+
         <div class="card">
+
             <div class="card-body">
-                <table class="table" id="datatable">
+                <table class="table table-bordered" id="datatable">
                     <thead>
                         <th>Code</th>
                         <th>Name</th>

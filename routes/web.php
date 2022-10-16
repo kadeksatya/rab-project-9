@@ -3,6 +3,9 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\ToolController;
+use App\Http\Controllers\WorkerController;
+use App\Http\Controllers\WorkTypeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,7 +57,17 @@ Route::prefix('admin')->middleware('web')->group(function(){
         Route::put('worker/{id}/update', [WorkerController::class, 'update']);
         Route::delete('worker/{id}/delete', [WorkerController::class, 'destroy']);
     
-    
+        
+        // Work Type 
+
+        Route::get('worktype', [WorkTypeController::class, 'index']);
+        Route::post('worktype', [WorkTypeController::class, 'store']);
+        Route::get('worktype/create', [WorkTypeController::class, 'create']);
+        Route::get('worktype/{id}/edit', [WorkTypeController::class, 'edit']);
+        Route::put('worktype/{id}/update', [WorkTypeController::class, 'update']);
+        Route::delete('worktype/{id}/delete', [WorkTypeController::class, 'destroy']);
+
+
     });
 
 });

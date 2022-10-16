@@ -13,11 +13,18 @@
 
     <!-- Core css -->
     <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
 
 <body>
     <div class="app">
+        @foreach ($errors->all() as $item)
+            <span class="showError" data-message="{{$item}}"></span>
+        @endforeach
+        @if (session('message'))
+            <span class="showSuccess" data-message="{{session('message')}}"></span>
+        @endif
         <div class="layout">
             @include('layouts.header')
 
@@ -82,6 +89,62 @@
 
     <!-- Core JS -->
     <script src="{{asset('assets/js/app.min.js')}}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        $('.showError').show(function(){
+            let message = $(this).data('message')
+
+            Swal.fire(
+                'Ops..',
+                message,
+                'error'
+            )
+        });
+
+        $('.showSuccess').show(function(){
+            let message = $(this).data('message')
+            Swal.fire(
+                'Horey',
+                message,
+                'success'
+            )
+        });
+        $(document).on('click', '.delete-item', function () {
+                var url = $(this).data('url');
+                Swal.fire({
+                    title: 'Warning',
+                    text: "Are you sure for delete this ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, Hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var id = $(this).data("id");
+                        var token = $("meta[name='csrf-token']").attr("content");
+                        $.ajax({
+                            url: url,
+                            type: 'DELETE',
+                            data: {
+                                "id": id,
+                                "_token": token,
+                            },
+                            success: function (data) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    data.message,
+                                    'success'
+                                )
+                                window.location.reload().time(3)
+                            }
+                        });
+                    }
+                })
+            })
+    </script>
 
 </body>
 

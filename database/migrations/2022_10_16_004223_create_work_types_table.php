@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
+        Schema::create('work_types', function (Blueprint $table) {
             $table->id();
-            $table->string('code', 100);
             $table->string('name', 100);
-            $table->string('unit', 100);
-            $table->integer('price');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        Schema::dropIfExists('work_types');
     }
 };

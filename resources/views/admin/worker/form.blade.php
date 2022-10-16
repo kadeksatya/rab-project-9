@@ -7,7 +7,7 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="{{ $data == null ? '/admin/masterdata/material' : '/admin/masterdata/material/'.$data->id.'/update' }}" method="POST">
+                <form action="{{ $data == null ? '/admin/masterdata/worker' : '/admin/masterdata/worker/'.$data->id.'/update' }}" method="POST">
                 @csrf
 
                 @if ($data == null)
@@ -21,11 +21,11 @@
                     <input type="text" class="form-control" name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
                 </div>                <div class="form-group mb-2">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Semen">
+                    <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Jhon doe">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Unit</label>
-                    <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . Sak">
+                    <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . buruh lepas">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Price</label>
@@ -35,7 +35,7 @@
         </div>
         <div class="card-footer">
             @include('components.btnactionform', [
-                'url_back' => '/admin/masterdata/material'
+                'url_back' => '/admin/masterdata/worker'
             ])
         </div>
     </form>

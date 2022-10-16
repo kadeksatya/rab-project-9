@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Material;
+use App\Models\WorkType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class MaterialController extends Controller
+class WorkTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $datas = Material::all();
+        $datas = WorkType::all();
 
-        return view('admin.material.index', [
-            'page_name' => 'Material',
+        return view('admin.worktype.index', [
+            'page_name' => 'Work Type',
             'datas' => $datas
         ]);
     }
@@ -31,8 +31,8 @@ class MaterialController extends Controller
     public function create()
     {
         $data = null;
-        return view('admin.material.form', [
-            'page_name' => 'Add Material',
+        return view('admin.worktype.form', [
+            'page_name' => 'Add Work Type',
             'data' => $data
         ]);
     }
@@ -50,9 +50,9 @@ class MaterialController extends Controller
             //code...
             $form = $request->all();
 
-            Material::create($form);
+            WorkType::create($form);
             DB::commit();
-            return redirect('/admin/masterdata/material')->with('message', 'Data successfully created');
+            return redirect('/admin/masterdata/worktype')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;
@@ -70,7 +70,7 @@ class MaterialController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\WorkType  $WorkType
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,15 +81,15 @@ class MaterialController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\WorkType  $WorkType
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $datas = Material::find($id);
+        $datas = WorkType::find($id);
 
-        return view('admin.material.form', [
-            'page_name' => 'Edit Material',
+        return view('admin.worktype.form', [
+            'page_name' => 'Edit Work Type',
             'data' => $datas
         ]);
     }
@@ -98,7 +98,7 @@ class MaterialController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\WorkType  $WorkType
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -108,10 +108,10 @@ class MaterialController extends Controller
             //code...
             $form = $request->except('_method', '_token');
 
-            Material::whereId($id)->update($form);
+            WorkType::whereId($id)->update($form);
             
             DB::commit();
-            return redirect('/admin/masterdata/material')->with('message', 'Data successfully created');
+            return redirect('/admin/masterdata/worktype')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;
@@ -127,12 +127,12 @@ class MaterialController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Material  $material
+     * @param  \App\Models\WorkType  $WorkType
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-       Material::whereId($id)->delete();
+       WorkType::whereId($id)->delete();
     
        return response([
         'message' => 'Data successfully deleted !'
