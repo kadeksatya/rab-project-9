@@ -12,10 +12,10 @@
         @if ($is_detail == true)
         <a href="{{$url_detail}}" class="dropdown-item"><i class="far fa-eye"></i> Detail</a>
         @endif
-        @if ($is_edit == true)
+        @if ($is_edit == true && Auth::user()->role_id == 1)
         <a href="{{$url_edit}}" class="dropdown-item"><i class="far fa-edit"></i> Edit</a>
         @endif
-        @if ($is_delete == true)
+        @if ($is_delete == true && Auth::user()->role_id == 1)
         <a href="javascript:void(0)" data-url="{{$url_delete}}" class="dropdown-item delete-item"> Delete</a>
         @endif
     </div>
