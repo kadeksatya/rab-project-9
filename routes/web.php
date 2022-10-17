@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\OverBudgetController;
 use App\Http\Controllers\RABController;
 use App\Http\Controllers\RABDetailController;
 use App\Http\Controllers\ToolController;
@@ -30,6 +31,17 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::prefix('admin')->middleware('web')->group(function(){
     Route::resource('dashboard', HomeController::class);
+    
+    // OverBudget Routes
+
+    Route::get('overbudget', [OverBudgetController::class, 'index']);
+    Route::post('overbudget', [OverBudgetController::class, 'store']);
+    Route::get('overbudget/{id}/detail', [OverBudgetController::class, 'show']);
+    Route::get('overbudget/{id}/create', [OverBudgetController::class, 'create']);
+    Route::get('overbudget/{id}/edit', [OverBudgetController::class, 'edit']);
+    Route::put('overbudget/{id}/update', [OverBudgetController::class, 'update']);
+    Route::delete('overbudget/{id}/{rab_id}/delete', [OverBudgetController::class, 'destroy']);
+
     Route::prefix('masterdata')->group(function(){
 
         // Material Routes

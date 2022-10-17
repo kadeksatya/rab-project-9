@@ -48,6 +48,14 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown open">
+                            <a class="dropdown-toggle" href="/admin/overbudget">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-area-chart"></i>
+                                </span>
+                                <span class="title">Over Budget</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

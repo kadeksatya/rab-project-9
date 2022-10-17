@@ -6,7 +6,7 @@
     <div class="col-md-12">
         @include('components.btnaction', [
             "item" => (Object)[
-                "url" => "/admin/rab/rabs/rabsdetail/".$rab_id."/create",
+                "url" => "/admin/overbudget/".$rab_id."/create",
                 "name" => "Add Work"
             ]
         ])
@@ -38,16 +38,17 @@
                             <td>{{$item->sub_amount}}</td>
                             <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-M-Y')}}</td>
                             <td>
-                                @if ($item->is_overbudget == 0)
+                                @if ($item->is_overbudget == 1)
                                 @include('components.btnactionlist', [
                                     "is_detail" => false,
                                     "is_edit" => false,
                                     "is_delete" => true,
                                     "url_detail" => "",
                                     "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
-                                    "url_delete" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/".$item->rab_id."/delete",
+                                    "url_delete" => "/admin/overbudget/".$item->detail_id."/".$item->rab_id."/delete",
                                 ])
                                 @endif
+
                             </td>
                         </tr>
                         @endforeach
