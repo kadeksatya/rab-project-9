@@ -15,10 +15,9 @@ return new class extends Migration
     {
         Schema::create('r_a_b_details', function (Blueprint $table) {
             $table->id();
+            $table->integer('rab_id');
             $table->integer('work_category_id');
             $table->integer('work_id');
-            $table->string('value_name', 100);
-            $table->integer('type_data');
             $table->double('volume', 16, 2 )->default(0);
             $table->string('unit', 100);
             $table->double('price', 16, 2 )->default(0);

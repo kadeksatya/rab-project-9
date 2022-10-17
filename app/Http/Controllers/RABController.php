@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RAB;
 use App\Models\RABDetail;
+use App\Models\WorkType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,7 +17,7 @@ class RABController extends Controller
      */
     public function index()
     {
-        $datas = RAB::with('category')->get();
+        $datas = RAB::all();
 
         return view('admin.rab.index', [
             'page_name' => 'RAB',
@@ -77,12 +78,19 @@ class RABController extends Controller
      */
     public function show($id)
     {
-        $datas = RABDetail::where('rab_id', $id)->get();
+        $datas = DB::table('r_a_b_details')
+        ->where('rab_id', $id)
+        ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
+        ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
+        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
+        ->get()
+        ->groupBy('category_name');
 
-        return view('admin.rab.RABdetail.index', [
+
+        return view('admin.rab.rabdetail.index', [
             'page_name' => 'Detail RAB',
             'datas' => $datas,
-            'RAB_id' => $id
+            'rab_id' => $id
         ]);
     }
 

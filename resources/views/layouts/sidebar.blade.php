@@ -44,7 +44,7 @@
                                     <a href="/admin/rab/work">Work</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/rab/tool">RAB</a>
+                                    <a href="/admin/rab/rabs">RAB</a>
                                 </li>
                             </ul>
                         </li>

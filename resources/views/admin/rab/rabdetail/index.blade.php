@@ -6,7 +6,7 @@
     <div class="col-md-12">
         @include('components.btnaction', [
             "item" => (Object)[
-                "url" => "/admin/rab/work/workdetail/".$work_id."/create",
+                "url" => "/admin/rab/rabs/rabsdetail/".$rab_id."/create",
                 "name" => "Add Work"
             ]
         ])
@@ -16,43 +16,42 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Name Tool/Worker/Material</th>
-                        <th>Koefisien</th>
-                        <th>Unit</th>
-                        <th>Sub Amount</th>
+                        <th>Work Category</th>
+                        <th>Work Name</th>
+                        <th>Volume</th>
+                        <th>Price</th>
+                        <th>Sub Total</th>
                         <th>Created At</th>
                         <th></th>
                     </thead>
                     <tbody>
-                        @forelse ($datas as $item)
-                            <tr>
-                                <td>
-                                    @if ($item->type_data == 1)
-                                        {{$item->material->name}}
-                                    @elseif ($item->type_data == 2)
-                                        {{$item->tool->name}}
-                                    @elseif ($item->type_data == 3)
-                                        {{$item->worker->name}}
-                                    @endif
-                                </td>
-                                <td>{{$item->koefisien}}</td>
-                                <td>{{$item->unit}}</td>
-                                <td>{{$item->sub_amount ?? 0}}</td>
-                                <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-M-Y')}}</td>
-                                <td>
-                                    @include('components.btnactionlist', [
-                                        "is_detail" => false,
-                                        "url_detail" => "",
-                                        "url_edit" => "/admin/rab/work/workdetail/".$item->id."/edit",
-                                        "url_delete" => "/admin/rab/work/workdetail/".$item->id."/delete",
-                                    ])
-                                </td>
-                            </tr>                            
-                        @empty
-                            <tr>
-                                <td colspan="5" class="text-center">No Data</td>
-                            </tr>
-                        @endforelse
+                        @foreach ($datas as $key => $value)
+                        <tr>
+                            <td colspan="7">{{$key}}</td>
+                        </tr>
+                        @foreach ($value as $item)
+                        <tr>
+                            <td></td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->volume}}</td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$item->sub_amount}}</td>
+                            <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-M-Y')}}</td>
+                            <td>
+                                @include('components.btnactionlist', [
+                                    "is_detail" => false,
+                                    "is_edit" => false,
+                                    "is_delete" => true,
+                                    "url_detail" => "",
+                                    "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
+                                    "url_delete" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/".$item->rab_id."/delete",
+                                ])
+                            </td>
+                        </tr>
+                        @endforeach
+
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>

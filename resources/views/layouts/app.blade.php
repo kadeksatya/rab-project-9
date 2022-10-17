@@ -15,6 +15,8 @@
     <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @stack('style')
+
 </head>
 
 <body>
@@ -114,6 +116,8 @@
         });
         $(document).on('click', '.delete-item', function () {
                 var url = $(this).data('url');
+
+                console.log(url);
                 Swal.fire({
                     title: 'Warning',
                     text: "Are you sure for delete this ?",

@@ -34,6 +34,8 @@
                                 <td>
                                     @include('components.btnactionlist', [
                                         "is_detail" => true,
+                                        "is_edit" => true,
+                                        "is_delete" => true,
                                         "url_detail" => "/admin/rab/work/".$item->id."/detail",
                                         "url_edit" => "/admin/rab/work/".$item->id."/edit",
                                         "url_delete" => "/admin/rab/work/".$item->id."/delete",

@@ -111,7 +111,8 @@ Route::prefix('admin')->middleware('web')->group(function(){
             Route::get('rabsdetail/{id}/create', [RABDetailController::class, 'create']);
             Route::get('rabsdetail/{id}/edit', [RABDetailController::class, 'edit']);
             Route::put('rabsdetail/{id}/update', [RABDetailController::class, 'update']);
-            Route::delete('rabsdetail/{id}/delete', [RABDetailController::class, 'destroy']);
+            Route::delete('rabsdetail/{id}/{rab_id}/delete', [RABDetailController::class, 'destroy']);
+            Route::get('rabsdetail/{id}/getDatas', [RABDetailController::class, 'getDatas']);
         });
 
     

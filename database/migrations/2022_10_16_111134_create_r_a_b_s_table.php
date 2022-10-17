@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 100);
             $table->timestamp('project_date');
-            $table->double('construction_servie', 16, 2)->default(0);
+            $table->double('construction_service', 16, 2)->default(0);
             $table->double('real_cost', 16, 2)->default(0);
             $table->double('rounded_up_cost', 16, 2)->default(0);
             $table->timestamps();

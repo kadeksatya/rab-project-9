@@ -7,7 +7,7 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="{{ $data == null ? '/admin/rab/work/workdetail' : '/admin/rab/work/workdetail/'.$data->id.'/update' }}" method="POST">
+                <form action="{{ $data == null ? '/admin/rab/rabs/rabsdetail' : '/admin/rab/rabs/rabsdetail/'.$data->id.'/update' }}" method="POST">
                 @csrf
 
                 @if ($data == null)
@@ -16,110 +16,66 @@
                     @method('PUT') 
                 @endif
 
+                {{$data}}
                 
-                <input type="hidden" name="work_id" value="{{$work_id}}">
-
-                <div class="form-group mb-2">
-                    <label for="">Koefisien</label>
-                    <input type="number" step="0.1" class="form-control koefisien" name="koefisien" value="{{$data->koefisien ?? 0}}" placeholder="ex. 0">
-                </div>
+                <input type="hidden" name="rab_id" value="{{$rab_id}}">
 
                 @if ($data != null) 
 
-                <div class="form-group mb-2">
-                    <label for="">Type Data</label>
-                    <select name="type_data" id="getDatas" class="form-control">
+                <div class="form-group mb-2 work_category">
+                    <label for="">Work Category</label>
+                    <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
                         <option value="" selected disabled></option>
-                        <option value="1" {{$data->type_data == 1 ? 'selected':''}}>Material</option>
-                        <option value="2" {{$data->type_data == 2 ? 'selected':''}}>Tool</option>
-                        <option value="3" {{$data->type_data == 3 ? 'selected':''}}>Worker</option>
-                    </select>
-                </div>
-
-                {{-- Material Get Dats --}}
-
-                <div class="form-group mb-2 material {{$data->type_data == 1 ? '':'d-none'}}">
-                    <label for="">Name Material</label>
-                    <select name="value_id" id="" class="form-control material_input">
-                        <option value="" selected disabled></option>
-                        @foreach ($material as $item)
-                            <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}" {{$data->value_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
+                        @foreach ($workcategory as $item)
+                            <option value="{{$item->id}}" {{$data->work_category_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                {{-- Tool Get Datas --}}
+                {{-- work Get Dats --}}
 
-                <div class="form-group mb-2 tool {{$data->type_data == 2 ? '':'d-none'}}">
-                    <label for="">Name Tool</label>
-                    <select name="value_id" id="" class="form-control tool_input">
+                <div class="form-group mb-2 work">
+                    <label for="">Name work</label>
+                    <select name="work_id" id="WorkName" class="form-control work_input">
                         <option value="" selected disabled></option>
-                        @foreach ($tool as $item)
-                            <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}" {{$data->value_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
+                        @foreach ($work as $item)
+                            <option value="{{$item->id}}" data-price="{{$item->total_amount}}" data-unit="{{$item->unit}}" {{$data->work_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                {{-- Worker Get Datas --}}
-
-                <div class="form-group mb-2 worker {{$data->type_data == 3 ? '':'d-none'}}">
-                    <label for="">Name Worker</label>
-                    <select name="value_id" id="" class="form-control worker_input">
-                        <option value="" selected disabled></option>
-                        @foreach ($worker as $item)
-                            <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}" {{$data->value_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
 
                 @else
 
-                <div class="form-group mb-2">
-                    <label for="">Type Data</label>
-                    <select name="type_data" id="getDatas" class="form-control">
+                <div class="form-group mb-2 work_category">
+                    <label for="">Work Category</label>
+                    <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
                         <option value="" selected disabled></option>
-                        <option value="1">Material</option>
-                        <option value="2">Tool</option>
-                        <option value="3">Worker</option>
-                    </select>
-                </div>
-
-                <div class="form-group mb-2 material d-none">
-                    <label for="">Name Material</label>
-                    <select name="value_id" id="" class="form-control material_input">
-                        <option value="" selected disabled></option>
-                        @foreach ($material as $item)
-                            <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
+                        @foreach ($workcategory as $item)
+                            <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                {{-- Tool Get Datas --}}
+                {{-- work Get Dats --}}
 
-                <div class="form-group mb-2 tool d-none">
-                    <label for="">Name Tool</label>
-                    <select name="value_id" id="" class="form-control tool_input">
+                <div class="form-group mb-2 work">
+                    <label for="">Name work</label>
+                    <select name="work_id" id="WorkName" class="form-control work_input">
                         <option value="" selected disabled></option>
-                        @foreach ($tool as $item)
-                            <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
+                        @foreach ($work as $item)
+                            <option value="{{$item->id}}" data-category_id="{{$item->work_category_id}}" data-price="{{$item->total_amount}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
                         @endforeach
                     </select>
                 </div>
 
-                {{-- Worker Get Datas --}}
-
-                <div class="form-group mb-2 worker d-none">
-                    <label for="">Name Worker</label>
-                    <select name="value_id" id="" class="form-control worker_input">
-                        <option value="" selected disabled></option>
-                        @foreach ($worker as $item)
-                            <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
 
                 @endif 
 
+                <div class="form-group mb-2">
+                    <label for="">Volume</label>
+                    <input type="text" class="form-control volume" name="volume" value="{{$data->volume ?? ''}}" placeholder="ex. pcs">
+                </div>
 
                 <div class="form-group mb-2">
                     <label for="">Unit</label>
@@ -131,7 +87,7 @@
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
-                    <input type="number" class="form-control sub_total" name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
+                    <input type="number" class="form-control sub_amount" name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
                 </div>
             </div>
         </div>
@@ -145,93 +101,57 @@
 </div>
 @endsection
 
+@push('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" />
+
+@endpush
+
 @push('script')
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
 <script>
-    $(document).ready(function () {
+        
+        $(function() {
+            let unit = $(".unit");
+            let price = $(".price");
 
-        let material = $(".material");
-        let tool = $(".tool");
-        let worker = $(".worker");
+            var $select1 = $('#WorkCategory'),
+            $select2 = $('#WorkName'),
+            $options = $select2.find('option');
 
-        let material_input = $(".material_input");
-        let tool_input = $(".tool_input");
-        let worker_input = $(".worker_input");
+        $select1.on('change', function() {
+        var size = $(this).find("option:selected").val();
+        $select2.html($options.filter('[data-category_id="' + size + '"]'));
+        $select2.val($select2.find("option:first").val());
 
-        let koefisien = $(".koefisien");
-        let unit = $(".unit");
-        let price = $(".price");
-        let sub_total = $(".sub_total");
-    
+        price.val($select2.find("option:selected").data('price'))
+        unit.val($select2.find("option:selected").data('unit'))
+        //$select2.val("");
+        }).trigger('change');
 
-        $("#getDatas").change(function (e) { 
+
+        $select2.change(function (e) { 
             e.preventDefault();
-            let values = $(this).val();
-
-            if(values == 1 ){
-                material.removeClass('d-none');
-                tool.addClass('d-none');
-                worker.addClass('d-none');
-                tool_input.val('');
-                worker_input.val('');
-            }
-            if(values == 2){
-                material.addClass('d-none');
-                tool.removeClass('d-none');
-                worker.addClass('d-none');
-                material_input.val('');
-                worker_input.val('');
-            }
-            if(values == 3){
-                material.addClass('d-none');
-                tool.addClass('d-none');
-                worker.removeClass('d-none');
-                material_input.val('');
-                tool_input.val('');
-            }
-
-            
+            price.val($(this).find("option:selected").data('price'))
+            unit.val($(this).find("option:selected").data('unit'))
         });
 
 
-        function subtotal(amount) { 
-            sub_total.val(amount * koefisien.val());
-            console.log(amount);
-            console.log(koefisien.val());
+
+        function subtotal(amount) {
+            $(".sub_amount").val(amount * price.val());
+            
         }
 
-        $(material).change(function (e) { 
-            e.preventDefault();
-            let values_select =  $(this).find(":selected").data('price');
-            let values_unit =  $(this).find(":selected").data('unit');
-            price.val(values_select);
-            unit.val(values_unit);
-            subtotal(values_select);
-            console.log(values_unit);
-            
+        $(".volume").on('input', function(){
+            let amount = $(this).val()
+            console.log(amount);
+            subtotal(amount);
         });
 
-        $(tool).change(function (e) { 
-            e.preventDefault();
-            let values_select =  $(this).find(":selected").data('price');
-            let values_unit =  $(this).find(":selected").data('unit');
-            price.val(values_select);
-            unit.val(values_unit);
-            subtotal(values_select);
-            console.log(values_unit);
-            
-        });
 
-        $(worker).change(function (e) { 
-            e.preventDefault();
-            let values_select =  $(this).find(":selected").data('price');
-            let values_unit =  $(this).find(":selected").data('unit');
-            price.val(values_select);
-            unit.val(values_unit);
-            subtotal(values_select);
-            console.log(values_unit);
-            
-        });
+        
+
     });
 </script>
 
