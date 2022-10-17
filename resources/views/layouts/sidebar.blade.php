@@ -10,6 +10,7 @@
                                 <span class="title">Dashboard</span>
                             </a>
                         </li>
+                        @if (Auth::user()->role_id == 1)
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
@@ -32,6 +33,8 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
+
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
@@ -40,9 +43,12 @@
                                 <span class="title">RAB</span>
                             </a>
                             <ul class="dropdown-menu">
+                                @if (Auth::user()->role_id == 1)
                                 <li>
                                     <a href="/admin/rab/work">Work</a>
                                 </li>
+                                @endif
+
                                 <li>
                                     <a href="/admin/rab/rabs">RAB</a>
                                 </li>
@@ -56,6 +62,17 @@
                                 <span class="title">Over Budget</span>
                             </a>
                         </li>
+                        @if (Auth::user()->role_id == 1)
+
+                        <li class="nav-item dropdown open">
+                            <a class="dropdown-toggle" href="/admin/administrator">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-team"></i>
+                                </span>
+                                <span class="title">Users Management</span>
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministratorController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MaterialController;
@@ -130,5 +131,14 @@ Route::prefix('admin')->middleware('web')->group(function(){
     
 
     });
+
+        // Administrator Routes
+
+        Route::get('administrator', [AdministratorController::class, 'index']);
+        Route::post('administrator', [AdministratorController::class, 'store']);
+        Route::get('administrator/create', [AdministratorController::class, 'create']);
+        Route::get('administrator/{id}/edit', [AdministratorController::class, 'edit']);
+        Route::put('administrator/{id}/update', [AdministratorController::class, 'update']);
+        Route::delete('administrator/{id}/delete', [AdministratorController::class, 'destroy']);
 
 });
