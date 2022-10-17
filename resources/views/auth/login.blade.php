@@ -7,7 +7,7 @@
     <title>{{config('app.name')}} | {{$page_name}}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png">
+    <link rel="shortcut icon" href="{{asset('assets/images/logo/favicon.png')}}">
 
     <!-- page css -->
 
@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="d-flex full-height p-v-15 flex-column justify-content-between">
                 <div class="d-none d-md-flex p-h-40">
-                    <img src="assets/images/logo/logo.png" alt="">
+                    <img src="assets/images/logo/android-chrome-192x192.png" width="50px" alt="">
                 </div>
                 <div class="container">
                     <div class="row align-items-center">
@@ -63,9 +63,6 @@
                                     </form>
                                 </div>
                             </div>
-                        </div>
-                        <div class="offset-md-1 col-md-6 d-none d-md-block">
-                            <img class="img-fluid" src="assets/images/others/login-2.png" alt="">
                         </div>
                     </div>
                 </div>

@@ -7,13 +7,14 @@
     <title>{{config('app.name')}} | {{$page_name}}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('assets/images/logo/favicon.png')}}">
+    <link rel="shortcut icon" href="{{asset('assets/images/logo/favicon-32x32.png')}}">
 
     <!-- page css -->
 
     <!-- Core css -->
     <link href="{{asset('assets/css/app.min.css')}}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="{{asset('assets/vendors/datatables/dataTables.bootstrap.min.css')}}" rel="stylesheet">
 
     @stack('style')
 
@@ -92,10 +93,18 @@
     <!-- Core JS -->
     <script src="{{asset('assets/js/app.min.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- page js -->
+    <script src="{{asset('assets/vendors/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/datatables/dataTables.bootstrap.min.js')}}"></script>
 
     @stack('script')
 
     <script>
+
+        $(function () {
+            $('#datatable').DataTable();
+        });
+
         $('.showError').show(function(){
             let message = $(this).data('message')
 
@@ -146,6 +155,27 @@
                                 window.location.reload().time(3)
                             }
                         });
+                    }
+                })
+            })
+
+            $(document).on('click', '.logout', function () {
+                var url = $(this).data('url');
+
+                console.log(url);
+                Swal.fire({
+                    title: 'Warning',
+                    text: "Are you sure logout ?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        var id = $(this).data("id");
+                        var token = $("meta[name='csrf-token']").attr("content");
+                        $("#logoutUser").submit();
                     }
                 })
             })

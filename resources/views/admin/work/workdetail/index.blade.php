@@ -28,11 +28,11 @@
                             <tr>
                                 <td>
                                     @if ($item->type_data == 1)
-                                        {{$item->material->name}}
+                                        {{$item->material->name ?? '-'}}
                                     @elseif ($item->type_data == 2)
-                                        {{$item->tool->name}}
+                                        {{$item->tool->name ?? '-'}}
                                     @elseif ($item->type_data == 3)
-                                        {{$item->worker->name}}
+                                        {{$item->worker->name ?? '-'}}
                                     @endif
                                 </td>
                                 <td>{{$item->koefisien}}</td>
