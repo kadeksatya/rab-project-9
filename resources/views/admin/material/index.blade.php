@@ -34,6 +34,8 @@
                                         "is_detail" => false,
                                         "is_edit" => true,
                                         "is_delete" => true,
+                                        "is_print" => false,
+
                                         "url_detail" => "",
                                         "url_edit" => "/admin/masterdata/material/".$item->id."/edit",
                                         "url_delete" => "/admin/masterdata/material/".$item->id."/delete",

@@ -43,6 +43,8 @@
                                     "is_detail" => false,
                                     "is_edit" => false,
                                     "is_delete" => true,
+                                    "is_print" => false,
+
                                     "url_detail" => "",
                                     "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
                                     "url_delete" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/".$item->rab_id."/delete",

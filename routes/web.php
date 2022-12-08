@@ -118,6 +118,7 @@ Route::prefix('admin')->middleware('auth:web')->group(function(){
         Route::put('rabs/{id}/update', [RABController::class, 'update']);
         Route::delete('rabs/{id}/delete', [RABController::class, 'destroy']);
         Route::get('rabs/{id}/detail', [RABController::class, 'show']);
+        Route::get('rabs/{id}/print', [RABController::class, 'print']);
 
         Route::prefix('rabs')->group(function(){
             Route::post('rabsdetail', [RABDetailController::class, 'store']);

@@ -35,6 +35,7 @@
                                     @include('components.btnactionlist', [
                                         "is_detail" => true,
                                         "is_edit" => true,
+                                        "is_print" => false,
                                         "is_delete" => true,
                                         "url_detail" => "/admin/rab/work/".$item->id."/detail",
                                         "url_edit" => "/admin/rab/work/".$item->id."/edit",

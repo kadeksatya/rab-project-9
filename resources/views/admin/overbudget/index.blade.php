@@ -56,8 +56,10 @@
                                     @include('components.btnactionlist', [
                                         "is_detail" => true,
                                         "is_edit" => false,
+                                        "is_print" => true,
                                         "is_delete" => false,
                                         "url_detail" => "/admin/overbudget/".$item->id."/detail",
+                                        "url_print" => "/admin/rab/rabs/".$item->id."/print",
                                         "url_edit" => "/admin/overbudget/".$item->id."/edit",
                                         "url_delete" => "/admin/overbudget/".$item->id."/delete",
                                     ])

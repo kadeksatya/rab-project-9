@@ -33,6 +33,7 @@
                                     @include('components.btnactionlist', [
                                         "is_detail" => false,
                                         "is_edit" => true,
+                                        "is_print" => false,
                                         "is_delete" => true,
                                         "url_detail" => "",
                                         "url_edit" => "/admin/masterdata/tool/".$item->id."/edit",

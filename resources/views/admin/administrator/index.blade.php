@@ -30,6 +30,7 @@
                                         "is_detail" => false,
                                         "is_edit" => true,
                                         "is_delete" => true,
+                                        "is_print" => false,
                                         "url_detail" => "",
                                         "url_edit" => "/admin/administrator/".$item->id."/edit",
                                         "url_delete" => "/admin/administrator/".$item->id."/delete",

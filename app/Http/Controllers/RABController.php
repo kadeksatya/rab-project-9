@@ -94,6 +94,31 @@ class RABController extends Controller
         ]);
     }
 
+
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\RAB  $RAB
+     * @return \Illuminate\Http\Response
+     */
+    public function print($id)
+    {
+        $details = DB::table('r_a_b_details')
+        ->where('rab_id', $id)
+        ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
+        ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
+        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
+        ->get()
+        ->groupBy('category_name');
+
+        $datas = RAB::whereId($id)->first();
+        return view('admin.rab.print_rab', [
+            'page_name' => 'Print RAB'.' '.$datas->name,
+            'data' => $datas,
+            'detail' => $details,
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
