@@ -30,7 +30,7 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 
-Route::prefix('admin')->middleware('web')->group(function(){
+Route::prefix('admin')->middleware('auth:web')->group(function(){
     Route::resource('dashboard', HomeController::class);
     
     // OverBudget Routes

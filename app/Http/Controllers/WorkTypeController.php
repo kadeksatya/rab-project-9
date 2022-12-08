@@ -18,7 +18,7 @@ class WorkTypeController extends Controller
         $datas = WorkType::all();
 
         return view('admin.worktype.index', [
-            'page_name' => 'Work Type',
+            'page_name' => 'Jenis Pekerjaan',
             'datas' => $datas
         ]);
     }
@@ -32,7 +32,7 @@ class WorkTypeController extends Controller
     {
         $data = null;
         return view('admin.worktype.form', [
-            'page_name' => 'Add Work Type',
+            'page_name' => 'Add Jenis Pekerjaan',
             'data' => $data
         ]);
     }
@@ -89,7 +89,7 @@ class WorkTypeController extends Controller
         $datas = WorkType::find($id);
 
         return view('admin.worktype.form', [
-            'page_name' => 'Edit Work Type',
+            'page_name' => 'Edit Jenis Pekerjaan',
             'data' => $datas
         ]);
     }

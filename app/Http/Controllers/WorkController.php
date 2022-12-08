@@ -20,7 +20,7 @@ class WorkController extends Controller
         $datas = Work::with('category')->get();
 
         return view('admin.work.index', [
-            'page_name' => 'Work',
+            'page_name' => 'Pekerjaan',
             'datas' => $datas,
         ]);
     }
@@ -36,7 +36,7 @@ class WorkController extends Controller
         $category = WorkType::all();
 
         return view('admin.work.form', [
-            'page_name' => 'Add Work',
+            'page_name' => 'Tambah Pekerjaan',
             'data' => $data,
             'category' => $category,
         ]);
@@ -83,7 +83,7 @@ class WorkController extends Controller
         $datas = WorkDetail::where('work_id', $id)->get();
 
         return view('admin.work.workdetail.index', [
-            'page_name' => 'Detail Work',
+            'page_name' => 'Detail Pekerjaan',
             'datas' => $datas,
             'work_id' => $id
         ]);
@@ -101,7 +101,7 @@ class WorkController extends Controller
         $category = WorkType::all();
 
         return view('admin.work.form', [
-            'page_name' => 'Edit Work',
+            'page_name' => 'Edit Pekerjaan',
             'data' => $datas,
             'category' => $category,
 

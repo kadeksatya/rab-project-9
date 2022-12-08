@@ -20,16 +20,16 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="/admin/masterdata/material">Material</a>
+                                    <a href="/admin/masterdata/material">Bahan</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/masterdata/tool">Tool</a>
+                                    <a href="/admin/masterdata/tool">Alat</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/masterdata/worker">Worker</a>
+                                    <a href="/admin/masterdata/worker">Pekerja</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/masterdata/worktype">Work Type</a>
+                                    <a href="/admin/masterdata/worktype">Jenis Pekerjaan</a>
                                 </li>
                             </ul>
                         </li>
@@ -45,7 +45,7 @@
                             <ul class="dropdown-menu">
                                 @if (Auth::user()->role_id == 1)
                                 <li>
-                                    <a href="/admin/rab/work">Work</a>
+                                    <a href="/admin/rab/work">Pekerjaan</a>
                                 </li>
                                 @endif
 

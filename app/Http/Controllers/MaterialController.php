@@ -18,7 +18,7 @@ class MaterialController extends Controller
         $datas = Material::all();
 
         return view('admin.material.index', [
-            'page_name' => 'Material',
+            'page_name' => 'Bahan',
             'datas' => $datas
         ]);
     }
@@ -32,7 +32,7 @@ class MaterialController extends Controller
     {
         $data = null;
         return view('admin.material.form', [
-            'page_name' => 'Add Material',
+            'page_name' => 'Tambah Bahan',
             'data' => $data
         ]);
     }
@@ -89,7 +89,7 @@ class MaterialController extends Controller
         $datas = Material::find($id);
 
         return view('admin.material.form', [
-            'page_name' => 'Edit Material',
+            'page_name' => 'Edit Bahan',
             'data' => $datas
         ]);
     }

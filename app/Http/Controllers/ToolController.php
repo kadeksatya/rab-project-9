@@ -18,7 +18,7 @@ class ToolController extends Controller
         $datas = Tool::all();
 
         return view('admin.tool.index', [
-            'page_name' => 'Tool',
+            'page_name' => 'Alat',
             'datas' => $datas
         ]);
     }
@@ -32,7 +32,7 @@ class ToolController extends Controller
     {
         $data = null;
         return view('admin.tool.form', [
-            'page_name' => 'Add Tool',
+            'page_name' => 'Tambah Alat',
             'data' => $data
         ]);
     }
@@ -89,7 +89,7 @@ class ToolController extends Controller
         $datas = Tool::find($id);
 
         return view('admin.tool.form', [
-            'page_name' => 'Edit Tool',
+            'page_name' => 'Edit Alat',
             'data' => $datas
         ]);
     }

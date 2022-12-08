@@ -35,7 +35,7 @@ class WorkDetailController extends Controller
         $worker = Worker::all();
 
         return view('admin.work.workdetail.form', [
-            'page_name' => 'Add Work Detail',
+            'page_name' => 'Tambah Detail Pekerjaan',
             'data' => $data,
             'material' => $material,
             'tool' => $tool,
@@ -106,7 +106,7 @@ class WorkDetailController extends Controller
         $worker = Worker::all();
 
         return view('admin.work.workdetail.form', [
-            'page_name' => 'Edit Work Detail',
+            'page_name' => 'Edit Detail Pekerjaan',
             'data' => $data,
             'material' => $material,
             'tool' => $tool,

@@ -24,13 +24,13 @@ class UserSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'role_id'=> 1
             ],
-            0 => [
+            1 => [
                 'name' => 'direktur',
                 'username' => 'direktur',
                 'password' => Hash::make('password'),
                 'email' => 'direktur@gmail.com',
                 'role_id'=> 2
-                ],
+            ],
         ]);
     }
 }

@@ -18,7 +18,7 @@ class WorkerController extends Controller
         $datas = Worker::all();
 
         return view('admin.worker.index', [
-            'page_name' => 'Worker',
+            'page_name' => 'Pekerja',
             'datas' => $datas
         ]);
     }
@@ -32,7 +32,7 @@ class WorkerController extends Controller
     {
         $data = null;
         return view('admin.worker.form', [
-            'page_name' => 'Add Worker',
+            'page_name' => 'Tambah Pekerja',
             'data' => $data
         ]);
     }
@@ -89,7 +89,7 @@ class WorkerController extends Controller
         $datas = Worker::find($id);
 
         return view('admin.worker.form', [
-            'page_name' => 'Edit Worker',
+            'page_name' => 'Edit Pekerja',
             'data' => $datas
         ]);
     }
