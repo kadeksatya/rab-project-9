@@ -36,11 +36,11 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
-                        <th>Project Name</th>
-                        <th>Project Date</th>
-                        <th>Construction Service</th>
-                        <th>Real Cost</th>
-                        <th>Round Up Cost</th>
+                        <th>Nama Proyek</th>
+                        <th>Tanggal Proyek</th>
+                        <th>Biaya Kontruksi</th>
+                        <th>Pengeluaran</th>
+                        <th>Dibulatkan</th>
                         <th></th>
                     </thead>
                     <tbody>

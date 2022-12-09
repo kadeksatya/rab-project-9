@@ -16,10 +16,10 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Code</th>
+                        <th>Kode</th>
                         <th>Name</th>
-                        <th>Unit</th>
-                        <th>Price</th>
+                        <th>Satuan</th>
+                        <th>Harga</th>
                         <th></th>
                     </thead>
                     <tbody>

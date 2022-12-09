@@ -16,11 +16,11 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Name Tool/Worker/Material</th>
+                        <th>Nama Bahan/Pekerja/Bahan</th>
                         <th>Koefisien</th>
-                        <th>Unit</th>
-                        <th>Sub Amount</th>
-                        <th>Created At</th>
+                        <th>Satuan</th>
+                        <th>Harga Satuan</th>
+                        <th>Dibuat pada</th>
                         <th></th>
                     </thead>
                     <tbody>

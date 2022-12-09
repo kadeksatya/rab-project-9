@@ -16,8 +16,8 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Name</th>
-                        <th>Roles</th>
+                        <th>Nama</th>
+                        <th>Role</th>
                         <th></th>
                     </thead>
                     <tbody>

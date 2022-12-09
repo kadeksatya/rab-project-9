@@ -7,7 +7,7 @@
         @include('components.btnaction', [
             "item" => (Object)[
                 "url" => "/admin/masterdata/worktype/create",
-                "name" => "Add Work Type"
+                "name" => "Tambah Jenis Pekerjaan"
             ]
         ])
 
@@ -16,7 +16,7 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Name</th>
+                        <th>Nama</th>
                         <th></th>
                     </thead>
                     <tbody>

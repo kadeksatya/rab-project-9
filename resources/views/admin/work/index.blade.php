@@ -7,7 +7,7 @@
         @include('components.btnaction', [
             "item" => (Object)[
                 "url" => "/admin/rab/work/create",
-                "name" => "Add Work"
+                "name" => "Tambah Pekerjaan"
             ]
         ])
 
@@ -16,11 +16,11 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Code</th>
-                        <th>Work Name</th>
-                        <th>Work Category</th>
-                        <th>Unit</th>
-                        <th>Total Amount</th>
+                        <th>Kode</th>
+                        <th>Nama Proyek</th>
+                        <th>Jenis Pekerjaan</th>
+                        <th>Satuan</th>
+                        <th>Total Harga</th>
                         <th></th>
                     </thead>
                     <tbody>

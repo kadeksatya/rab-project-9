@@ -16,12 +16,12 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Work Category</th>
-                        <th>Work Name</th>
+                        <th>Jenis Pekerjaan</th>
+                        <th>Nama Pekerjaan</th>
                         <th>Volume</th>
-                        <th>Price</th>
+                        <th>Harga</th>
                         <th>Sub Total</th>
-                        <th>Created At</th>
+                        <th>Dibuat pada</th>
                         <th></th>
                     </thead>
                     <tbody>
