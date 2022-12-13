@@ -24,7 +24,7 @@
                 @if ($data != null) 
 
                 <div class="form-group mb-2 work_category">
-                    <label for="">Work Category</label>
+                    <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
                         <option value="" selected disabled></option>
                         @foreach ($workcategory as $item)
@@ -36,7 +36,7 @@
                 {{-- work Get Dats --}}
 
                 <div class="form-group mb-2 work">
-                    <label for="">Name work</label>
+                    <label for="">Nama Pekerjaan</label>
                     <select name="work_id" id="WorkName" class="form-control work_input">
                         <option value="" selected disabled></option>
                         @foreach ($work as $item)
@@ -49,7 +49,7 @@
                 @else
 
                 <div class="form-group mb-2 work_category">
-                    <label for="">Work Category</label>
+                    <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
                         <option value="" selected disabled></option>
                         @foreach ($workcategory as $item)
@@ -61,7 +61,7 @@
                 {{-- work Get Dats --}}
 
                 <div class="form-group mb-2 work">
-                    <label for="">Name work</label>
+                    <label for="">Nama Pekerjaan</label>
                     <select name="work_id" id="WorkName" class="form-control work_input">
                         <option value="" selected disabled></option>
                         @foreach ($work as $item)
@@ -79,11 +79,11 @@
                 </div>
 
                 <div class="form-group mb-2">
-                    <label for="">Unit</label>
+                    <label for="">Satuan</label>
                     <input type="text" class="form-control unit" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="">Price</label>
+                    <label for="">Harga</label>
                     <input type="number" step="0.1" class="form-control price" name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">

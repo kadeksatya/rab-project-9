@@ -17,17 +17,17 @@
                 @endif
 
                 <div class="form-group mb-2">
-                    <label for="">Project Name</label>
+                    <label for="">Nama Proyek</label>
                     <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Nembok">
                 </div>
 
                 <div class="form-group mb-2">
-                    <label for="">Project Date</label>
+                    <label for="">Tanggal Proyek</label>
                     <input type="date" class="form-control" name="unit" value="{{$data->project_date ?? ''}}" placeholder="">
                 </div>
 
                 <div class="form-group mb-2">
-                    <label for="">Construction Service</label>
+                    <label for="">Biaya Kontruksi</label>
                     <input type="num" step="0.1" class="form-control" name="construction_service" value="{{$data->construction_service ?? ''}}" placeholder="ex . 1">
                 </div>
             </div>

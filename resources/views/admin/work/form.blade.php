@@ -17,17 +17,17 @@
                 @endif
 
                 <div class="form-group mb-2">
-                    <label for="">Code</label>
+                    <label for="">Kode</label>
                     <input type="text" class="form-control" name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
                 </div>                
                 <div class="form-group mb-2">
-                    <label for="">Name Work</label>
+                    <label for="">Nama Pekerjaan</label>
                     <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Nembok">
                 </div>
 
                 @if ($data != null)
                 <div class="form-group mb-2">
-                    <label for="">Category Work</label>
+                    <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="" class="form-control">
                         <option value="" selected disabled></option>
                         @foreach ($category as $item)
@@ -37,7 +37,7 @@
                 </div>
                 @else
                 <div class="form-group mb-2">
-                    <label for="">Category Work</label>
+                    <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="" class="form-control">
                         <option value="" selected disabled></option>
                         @foreach ($category as $item)
@@ -48,7 +48,7 @@
                 @endif
 
                 <div class="form-group mb-2">
-                    <label for="">Unit</label>
+                    <label for="">Satuan</label>
                     <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . Borongan">
                 </div>
             </div>

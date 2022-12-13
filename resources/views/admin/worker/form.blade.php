@@ -17,18 +17,18 @@
                 @endif
 
                 <div class="form-group mb-2">
-                    <label for="">Code</label>
+                    <label for="">Kode</label>
                     <input type="text" class="form-control" name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
                 </div>                <div class="form-group mb-2">
-                    <label for="">Name</label>
+                    <label for="">Nama</label>
                     <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Jhon doe">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="">Unit</label>
+                    <label for="">Satuan</label>
                     <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . buruh lepas">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="">Price</label>
+                    <label for="">Harga</label>
                     <input type="number" min="1" class="form-control" name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
                 </div>
             </div>

@@ -39,7 +39,7 @@
                 {{-- Material Get Dats --}}
 
                 <div class="form-group mb-2 material {{$data->type_data == 1 ? '':'d-none'}}">
-                    <label for="">Name Material</label>
+                    <label for="">Nama Bahan</label>
                     <select name="value_id" id="" class="form-control material_input">
                         <option value="" selected disabled></option>
                         @foreach ($material as $item)
@@ -51,7 +51,7 @@
                 {{-- Tool Get Datas --}}
 
                 <div class="form-group mb-2 tool {{$data->type_data == 2 ? '':'d-none'}}">
-                    <label for="">Name Tool</label>
+                    <label for="">Nama Alat</label>
                     <select name="value_id" id="" class="form-control tool_input">
                         <option value="" selected disabled></option>
                         @foreach ($tool as $item)
@@ -63,7 +63,7 @@
                 {{-- Worker Get Datas --}}
 
                 <div class="form-group mb-2 worker {{$data->type_data == 3 ? '':'d-none'}}">
-                    <label for="">Name Worker</label>
+                    <label for="">Name Pekerja</label>
                     <select name="value_id" id="" class="form-control worker_input">
                         <option value="" selected disabled></option>
                         @foreach ($worker as $item)
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="form-group mb-2 material d-none">
-                    <label for="">Name Material</label>
+                    <label for="">Nama Bahan</label>
                     <select name="value_id" id="" class="form-control material_input">
                         <option value="" selected disabled></option>
                         @foreach ($material as $item)
@@ -97,7 +97,7 @@
                 {{-- Tool Get Datas --}}
 
                 <div class="form-group mb-2 tool d-none">
-                    <label for="">Name Tool</label>
+                    <label for="">Nama Bahan</label>
                     <select name="value_id" id="" class="form-control tool_input">
                         <option value="" selected disabled></option>
                         @foreach ($tool as $item)
@@ -109,7 +109,7 @@
                 {{-- Worker Get Datas --}}
 
                 <div class="form-group mb-2 worker d-none">
-                    <label for="">Name Worker</label>
+                    <label for="">Nama Pekerja</label>
                     <select name="value_id" id="" class="form-control worker_input">
                         <option value="" selected disabled></option>
                         @foreach ($worker as $item)
@@ -122,11 +122,11 @@
 
 
                 <div class="form-group mb-2">
-                    <label for="">Unit</label>
+                    <label for="">Satuan</label>
                     <input type="text" class="form-control unit" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="">Price</label>
+                    <label for="">Harga</label>
                     <input type="number" step="0.1" class="form-control price" name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">

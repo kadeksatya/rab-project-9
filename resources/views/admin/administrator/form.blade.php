@@ -17,7 +17,7 @@
                 @endif
       
                 <div class="form-group mb-2">
-                    <label for="">Name</label>
+                    <label for="">Nama</label>
                     <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Jhon Doe">
                 </div>
                 <div class="form-group mb-2">
