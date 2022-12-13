@@ -7,7 +7,7 @@
         @include('components.btnaction', [
             "item" => (Object)[
                 "url" => "/admin/masterdata/material/create",
-                "name" => "Add Material"
+                "name" => "Tambah Bahan"
             ]
         ])
 

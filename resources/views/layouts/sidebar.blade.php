@@ -45,7 +45,7 @@
                             <ul class="dropdown-menu">
                                 @if (Auth::user()->role_id == 1)
                                 <li>
-                                    <a href="/admin/rab/work">Pekerjaan</a>
+                                    <a href="/admin/rab/work">Harga Satuan Pekerjaan</a>
                                 </li>
                                 @endif
 

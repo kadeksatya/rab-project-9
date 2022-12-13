@@ -7,7 +7,7 @@
         @include('components.btnaction', [
             "item" => (Object)[
                 "url" => "/admin/administrator/create",
-                "name" => "Add User"
+                "name" => "Tambah User"
             ]
         ])
 

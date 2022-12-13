@@ -7,7 +7,7 @@
         @include('components.btnaction', [
             "item" => (Object)[
                 "url" => "/admin/rab/rabs/rabsdetail/".$rab_id."/create",
-                "name" => "Add Work"
+                "name" => "Tambah Pekerjaan"
             ]
         ])
 
