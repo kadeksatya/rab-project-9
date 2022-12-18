@@ -12,6 +12,7 @@ class WorkType extends Model
     
     protected $fillable =[
         'name',
+        'code'
     ];
 
 

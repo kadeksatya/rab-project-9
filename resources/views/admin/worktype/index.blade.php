@@ -16,12 +16,14 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
+                        <th>Kode</th>
                         <th>Nama</th>
                         <th></th>
                     </thead>
                     <tbody>
                         @forelse ($datas as $item)
                             <tr>
+                                <td>{{$item->code}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>
                                     @include('components.btnactionlist', [

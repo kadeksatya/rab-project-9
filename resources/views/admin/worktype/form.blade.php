@@ -14,7 +14,12 @@
                     @method('POST')
                 @else
                     @method('PUT') 
-                @endif             
+                @endif    
+                
+                <div class="form-group mb-2">
+                    <label for="">Kode</label>
+                    <input type="text" class="form-control" name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
+                </div>               
                 <div class="form-group mb-2">
                     <label for="">Nama</label>
                     <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Borongan">
