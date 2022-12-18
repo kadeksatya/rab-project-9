@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
-            $table->id();
-            $table->string('code', 100);
-            $table->string('name', 100);
-            $table->string('unit', 100);
-            $table->integer('price');
-            $table->timestamps();
+        Schema::table('materials', function (Blueprint $table) {
+            $table->string('material_type', 100);
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        Schema::table('materials', function (Blueprint $table) {
+            //
+        });
     }
 };
