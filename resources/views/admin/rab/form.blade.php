@@ -23,12 +23,12 @@
 
                 <div class="form-group mb-2">
                     <label for="">Tanggal Proyek</label>
-                    <input type="date" class="form-control" name="unit" value="{{$data->project_date ?? ''}}" placeholder="">
+                    <input type="date" class="form-control" name="project_date" value="{{$data->project_date ?? ''}}" placeholder="">
                 </div>
 
                 <div class="form-group mb-2">
                     <label for="">Biaya Kontruksi</label>
-                    <input type="num" step="0.1" class="form-control" name="construction_service" value="{{$data->construction_service ?? ''}}" placeholder="ex . 1">
+                    <input type="num" step="any" class="form-control" name="construction_service" value="{{$data->construction_service ?? ''}}" placeholder="ex . 1">
                 </div>
             </div>
         </div>

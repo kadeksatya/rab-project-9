@@ -30,7 +30,7 @@
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->material_type}}</td>
-                                <td>{{$item->price}}</td>
+                                <td>@currency($item->price)</td>
                                 <td>
                                     @include('components.btnactionlist', [
                                         "is_detail" => false,

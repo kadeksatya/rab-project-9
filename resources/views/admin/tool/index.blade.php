@@ -28,7 +28,7 @@
                                 <td>{{$item->code}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->unit}}</td>
-                                <td>{{$item->price}}</td>
+                                <td>@currency($item->price)</td>
                                 <td>
                                     @include('components.btnactionlist', [
                                         "is_detail" => false,

@@ -17,6 +17,7 @@
     <link href="{{asset('assets/vendors/datatables/dataTables.bootstrap.min.css')}}" rel="stylesheet">
 
     @stack('style')
+    
 
 </head>
 
@@ -103,6 +104,7 @@
 
         $(function () {
             $('#datatable').DataTable();
+            $('.datatable').DataTable();
         });
 
         $('.showError').show(function(){

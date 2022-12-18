@@ -86,10 +86,12 @@ class RABController extends Controller
         ->get()
         ->groupBy('category_name');
 
+        $rab = RAB::whereId($id)->first();
 
         return view('admin.rab.rabdetail.index', [
             'page_name' => 'Detail RAB',
             'datas' => $datas,
+            'data' => $rab,
             'rab_id' => $id
         ]);
     }

@@ -21,7 +21,7 @@
 
                 <div class="form-group mb-2">
                     <label for="">Koefisien</label>
-                    <input type="number" step="0.1" class="form-control koefisien" name="koefisien" value="{{$data->koefisien ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control koefisien" name="koefisien" value="{{$data->koefisien ?? 0}}" placeholder="ex. 0">
                 </div>
 
                 @if ($data != null) 
@@ -30,9 +30,9 @@
                     <label for="">Type Data</label>
                     <select name="type_data" id="getDatas" class="form-control">
                         <option value="" selected disabled></option>
-                        <option value="1" {{$data->type_data == 1 ? 'selected':''}}>Material</option>
-                        <option value="2" {{$data->type_data == 2 ? 'selected':''}}>Tool</option>
-                        <option value="3" {{$data->type_data == 3 ? 'selected':''}}>Worker</option>
+                        <option value="1" {{$data->type_data == 1 ? 'selected':''}}>Bahan</option>
+                        <option value="2" {{$data->type_data == 2 ? 'selected':''}}>Alat</option>
+                        <option value="3" {{$data->type_data == 3 ? 'selected':''}}>Upah Pekerja</option>
                     </select>
                 </div>
 
@@ -78,9 +78,9 @@
                     <label for="">Type Data</label>
                     <select name="type_data" id="getDatas" class="form-control">
                         <option value="" selected disabled></option>
-                        <option value="1">Material</option>
-                        <option value="2">Tool</option>
-                        <option value="3">Worker</option>
+                        <option value="1">Bahan</option>
+                        <option value="2">Alat</option>
+                        <option value="3">Upah Pekerja</option>
                     </select>
                 </div>
 

@@ -14,14 +14,13 @@
         <div class="card">
 
             <div class="card-body">
-                <table class="table table-bordered" id="datatable">
+                <table class="table table-bordered datatable" id="">
                     <thead>
                         <th>Jenis Pekerjaan</th>
                         <th>Nama Pekerjaan</th>
                         <th>Volume</th>
                         <th>Harga</th>
                         <th>Sub Total</th>
-                        <th>Dibuat pada</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -30,15 +29,14 @@
                             <td colspan="7">{{$key}}</td>
                         </tr>
                         @foreach ($value as $item)
+                        @if ($item->is_overbudget == 0)
                         <tr>
                             <td></td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->volume}}</td>
-                            <td>{{$item->price}}</td>
-                            <td>{{$item->sub_amount}}</td>
-                            <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-M-Y')}}</td>
+                            <td>@currency($item->price)</td>
+                            <td>@currency($item->sub_amount)</td>
                             <td>
-                                @if ($item->is_overbudget == 1)
                                 @include('components.btnactionlist', [
                                     "is_detail" => false,
                                     "is_edit" => false,
@@ -48,10 +46,10 @@
                                     "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
                                     "url_delete" => "/admin/overbudget/".$item->detail_id."/".$item->rab_id."/delete",
                                 ])
-                                @endif
 
                             </td>
                         </tr>
+                        @endif
                         @endforeach
 
                         @endforeach
@@ -60,10 +58,118 @@
                 </table>
             </div>
         </div>
+
+
+        <div class="card">
+            <div class="card-header mt-4"><h3>Over Budget</h3></div>
+            <div class="card-body">
+                <table class="table table-bordered datatable" id="">
+                    <thead>
+                        <th>Jenis Pekerjaan</th>
+                        <th>Nama Pekerjaan</th>
+                        <th>Volume</th>
+                        <th>Harga</th>
+                        <th>Sub Total</th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        @if ($item->is_overbudget == 1)
+                        @foreach ($datas as $key => $value)
+                        <tr>
+                            <td colspan="7">{{$key}}</td>
+                        </tr>
+                        @foreach ($value as $item)
+                        @if ($item->is_overbudget == 1)
+                        <tr>
+                            <td></td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->volume}}</td>
+                            <td>@currency($item->price)</td>
+                            <td>@currency($item->sub_amount)</td>
+                            <td>
+                                @include('components.btnactionlist', [
+                                    "is_detail" => false,
+                                    "is_edit" => false,
+                                    "is_print" => false,
+                                    "is_delete" => true,
+                                    "url_detail" => "",
+                                    "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
+                                    "url_delete" => "/admin/overbudget/".$item->detail_id."/".$item->rab_id."/delete",
+                                ])
+
+                            </td>
+                        </tr>
+                        @endif
+
+                        @endforeach
+
+                        @endforeach
+                        @endif
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-6">
+        <div></div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <table class="table" style="width:100%">
+            <tbody>
+                <tr>
+                    <td width="70%" colspan="5" class="text-right">
+                        <ul>
+                            <li>REAL COST</li>
+                            <li>JASA KONTRAKTOR ( {{$data->construction_service}} %)</li>
+                            <li>JUMLAH</li>
+                            <li>JUMLAH DIBULATKAN</li>
+                        </ul>
+                    </td>
+                    <td>
+                        @php
+                        if( !function_exists('ceiling') )
+                        {
+                            function ceiling($number, $significance = 1)
+                            {
+                                return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
+                            }
+                        }
+                            $real_cost = $data->real_cost;
+                            $total_construection = $data->construction_service / 100;
+                            $sub_total = $real_cost * $total_construection;
+                            $total = $real_cost + $sub_total;
+                            $rounded = ceiling($total, 1000);
+    
+                        @endphp
+                        <ul>
+                            <li>@currency($real_cost).00</li>
+                            <li>
+                                @currency($sub_total).00
+                            </li>
+                            <li>@currency($total).00</li>
+                            <li>@currency($rounded).00</li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
     </div>
 </div>
 @endsection
+@push('style')
+<style>
+    ul li {
+        text-decoration: none !important;
+        list-style-type: none;
+    }
 
+</style>
+@endpush
 
 @push('script')
     

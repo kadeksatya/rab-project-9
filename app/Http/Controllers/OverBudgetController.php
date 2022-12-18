@@ -44,10 +44,12 @@ class OverBudgetController extends Controller
         ->get()
         ->groupBy('category_name');
 
+        $rab = RAB::whereId($id)->first();
 
         return view('admin.overbudget.rabdetail.index', [
             'page_name' => 'Detail RAB',
             'datas' => $datas,
+            'data' => $rab,
             'rab_id' => $id
         ]);
     }
