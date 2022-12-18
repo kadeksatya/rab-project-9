@@ -38,9 +38,6 @@
                     <thead>
                         <th>Nama Proyek</th>
                         <th>Tanggal Proyek</th>
-                        <th>Biaya Kontruksi</th>
-                        <th>Pengeluaran</th>
-                        <th>Dibulatkan</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -48,9 +45,6 @@
                             <tr>
                                 <td>{{$item->name}}</td>
                                 <td>{{\Carbon\Carbon::parse($item->project_date)->format('d-M-Y')}}</td>
-                                <td>{{$item->construction_service}}</td>
-                                <td>@currency($item->real_cost)</td>
-                                <td>@currency($item->rounded_up_cost)</td>
 
                                 <td>
                                     @include('components.btnactionlist', [
