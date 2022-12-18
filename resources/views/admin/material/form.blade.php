@@ -28,6 +28,10 @@
                     <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . Sak">
                 </div>
                 <div class="form-group mb-2">
+                    <label for="">Jenis bahan</label>
+                    <input type="text" class="form-control" name="material_type" value="{{$data->material_type ?? ''}}" placeholder="ex . Batu Kapur">
+                </div>
+                <div class="form-group mb-2">
                     <label for="">Harga</label>
                     <input type="number" min="1" class="form-control" name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
                 </div>

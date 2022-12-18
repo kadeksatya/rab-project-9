@@ -2,14 +2,14 @@
             <div class="header">
                 <div class="logo logo-dark">
                     <a href="index.html">
-                        <img src="{{asset('assets/images/logo/android-chrome-192x192.png')}}" class="mt-2" width="50px" alt="Logo">
-                        <img class="logo-fold ml-3 mt-2" src="{{asset('assets/images/logo/android-chrome-192x192.png')}}" width="50px" alt="Logo">
+                        <img src="{{asset('assets/images/logo/favicon-32x32.png')}}" class="mt-2" width="50px" alt="Logo">
+                        <img class="logo-fold ml-3 mt-2" src="{{asset('assets/images/logo/favicon-32x32.png')}}" width="50px" alt="Logo">
                     </a>
                 </div>
                 <div class="logo logo-white">
                     <a href="index.html">
-                        <img src="{{asset('assets/images/logo/android-chrome-192x192.png')}}" alt="Logo">
-                        <img class="logo-fold" src="{{asset('assets/images/logo/android-chrome-192x192.png')}}" alt="Logo">
+                        <img src="{{asset('assets/images/logo/favicon-32x32.png')}}" alt="Logo">
+                        <img class="logo-fold" src="{{asset('assets/images/logo/favicon-32x32.png')}}" alt="Logo">
                     </a>
                 </div>
                 <div class="nav-wrap">

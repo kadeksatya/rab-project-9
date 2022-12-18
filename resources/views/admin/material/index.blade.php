@@ -19,6 +19,7 @@
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Satuan</th>
+                        <th>Jenis Bahan</th>
                         <th>Harga</th>
                         <th></th>
                     </thead>
@@ -28,6 +29,7 @@
                                 <td>{{$item->code}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->unit}}</td>
+                                <td>{{$item->material_type}}</td>
                                 <td>{{$item->price}}</td>
                                 <td>
                                     @include('components.btnactionlist', [

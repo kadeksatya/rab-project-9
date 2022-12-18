@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('code', 100);
             $table->string('name', 100);
             $table->string('unit', 100);
+            $table->string('material_type', 100);
             $table->integer('price');
             $table->timestamps();
         });

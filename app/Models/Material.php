@@ -13,7 +13,8 @@ class Material extends Model
         'code',
         'name',
         'unit',
-        'price'
+        'price',
+        'material_type'
     ];
 
 

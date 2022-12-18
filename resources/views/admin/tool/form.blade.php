@@ -24,7 +24,7 @@
                     <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Tang">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="">Satuan</label>
+                    <label for="">Kapasitas</label>
                     <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . pcs">
                 </div>
                 <div class="form-group mb-2">
