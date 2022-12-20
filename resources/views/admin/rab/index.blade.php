@@ -30,7 +30,7 @@
                                 <td>
                                     @include('components.btnactionlist', [
                                         "is_detail" => true,
-                                        "is_edit" => false,
+                                        "is_edit" => true,
                                         "is_print" => true,
                                         "is_delete" => false,
                                         "url_detail" => "/admin/rab/rabs/".$item->id."/detail",
