@@ -23,7 +23,7 @@
                     <label for="">Koefisien</label>
                     <input type="number" step="any" class="form-control koefisien" name="koefisien" value="{{$data->koefisien ?? 0}}" placeholder="ex. 0">
                 </div>
-                <input type="hidden" class="values_id" name="value_id" value="{{$data->value_id}}">
+                <input type="hidden" class="values_id" name="value_id" value="{{$data->value_id ?? ''}}">
 
                 @if ($data != null) 
 
