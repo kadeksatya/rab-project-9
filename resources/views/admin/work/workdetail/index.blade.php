@@ -16,11 +16,10 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Nama Bahan/Pekerja/Bahan</th>
+                        <th>Nama Bahan/Upah Pekerja/Bahan</th>
                         <th>Koefisien</th>
                         <th>Satuan</th>
                         <th>Harga Satuan</th>
-                        <th>Dibuat pada</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -38,7 +37,6 @@
                                 <td>{{$item->koefisien}}</td>
                                 <td>{{$item->unit}}</td>
                                 <td>{{$item->sub_amount ?? 0}}</td>
-                                <td>{{\Carbon\Carbon::parse($item->created_at)->format('d-M-Y')}}</td>
                                 <td>
                                     @include('components.btnactionlist', [
                                         "is_detail" => false,
