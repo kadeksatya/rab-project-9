@@ -83,7 +83,7 @@
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" step="0.1" class="form-control price" name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control price" name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
