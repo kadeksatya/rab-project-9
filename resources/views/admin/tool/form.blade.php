@@ -29,7 +29,7 @@
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" min="1" class="form-control" name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
+                    <input type="number" step="any" min="1" class="form-control" name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
                 </div>
             </div>
         </div>
