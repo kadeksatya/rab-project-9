@@ -128,7 +128,6 @@ class WorkDetailController extends Controller
         try {
             //code...
             $form = $request->except('_method', '_token', 'work_id');
-
             Workdetail::whereId($id)->update($form);
             $datas = WorkDetail::find($id);
 
