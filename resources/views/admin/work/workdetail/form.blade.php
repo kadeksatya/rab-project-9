@@ -131,7 +131,7 @@
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
-                    <input type="number" class="form-control sub_total" name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control sub_total" name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
                 </div>
             </div>
         </div>
@@ -195,7 +195,8 @@
 
 
         function subtotal(amount) { 
-            sub_total.val(amount * koefisien.val());
+            let total_amount = amount * koefisien.val();
+            sub_total.val(total_amount.toFixed(2));
             console.log(amount);
             console.log(koefisien.val());
         }
