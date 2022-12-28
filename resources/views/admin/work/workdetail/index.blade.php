@@ -16,7 +16,7 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Nama Bahan/Upah Pekerja/Bahan</th>
+                        <th>Nama Bahan/Upah Pekerja/Alat</th>
                         <th>Koefisien</th>
                         <th>Satuan</th>
                         <th>Harga Satuan</th>

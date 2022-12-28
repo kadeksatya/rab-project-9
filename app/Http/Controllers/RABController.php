@@ -157,7 +157,7 @@ class RABController extends Controller
             RAB::whereId($id)->update($form);
             
             DB::commit();
-            return redirect('/admin/rab/RAB')->with('message', 'Data successfully created');
+            return redirect('/admin/rab/rabs')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;

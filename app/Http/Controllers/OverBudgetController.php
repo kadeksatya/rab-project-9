@@ -186,7 +186,7 @@ class OverBudgetController extends Controller
             DB::commit();
 
 
-            return redirect('/admin/rab/rabs/'.$datas->work_id.'/detail')->with('message', 'Data successfully created');
+            return redirect('/admin/overbudget/'.$datas->work_id.'/detail')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;

@@ -16,8 +16,8 @@
             <div class="card-body">
                 <table class="table table-bordered" id="datatable">
                     <thead>
-                        <th>Nama Proyek</th>
-                        <th>Tanggal Proyek</th>
+                        <th>Nama Pekerjaan</th>
+                        <th>Tanggal Pekerjaan</th>
                         <th></th>
                     </thead>
                     <tbody>

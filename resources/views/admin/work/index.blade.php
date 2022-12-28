@@ -17,7 +17,7 @@
                 <table class="table table-bordered" id="datatable">
                     <thead>
                         <th>Kode</th>
-                        <th>Nama Proyek</th>
+                        <th>Nama Pekerjaan</th>
                         <th>Jenis Pekerjaan</th>
                         <th>Satuan</th>
                         <th>Total Harga</th>

@@ -116,13 +116,14 @@ class RABDetailController extends Controller
         $workcategory = WorkType::all();
         $work = Work::all();
         
+        
 
         return view('admin.rab.rabdetail.form', [
             'page_name' => 'Add RAB Detail',
             'data' => $data,
             'workcategory' => $workcategory,
             'work' => $work,
-            'rab_id' => $id
+            'rab_id' => $data->rab_id
         ]);
     }
 

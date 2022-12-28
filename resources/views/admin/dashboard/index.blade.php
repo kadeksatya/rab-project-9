@@ -11,7 +11,7 @@
                     </div>
                     <div class="m-l-15">
                         <h2 class="m-b-0">{{$project}}</h2>
-                        <p class="m-b-0 text-muted">Project</p>
+                        <p class="m-b-0 text-muted">Upah Pekerja</p>
                     </div>
                 </div>
             </div>

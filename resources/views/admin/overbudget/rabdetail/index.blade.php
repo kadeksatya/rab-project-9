@@ -37,15 +37,7 @@
                             <td>@currency($item->price)</td>
                             <td>@currency($item->sub_amount)</td>
                             <td>
-                                @include('components.btnactionlist', [
-                                    "is_detail" => false,
-                                    "is_edit" => false,
-                                    "is_print" => false,
-                                    "is_delete" => true,
-                                    "url_detail" => "",
-                                    "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
-                                    "url_delete" => "/admin/overbudget/".$item->detail_id."/".$item->rab_id."/delete",
-                                ])
+                                
 
                             </td>
                         </tr>
@@ -73,7 +65,6 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @if ($item->is_overbudget == 1)
                         @foreach ($datas as $key => $value)
                         <tr>
                             <td colspan="7">{{$key}}</td>
@@ -87,15 +78,18 @@
                             <td>@currency($item->price)</td>
                             <td>@currency($item->sub_amount)</td>
                             <td>
+                                @if ($item->is_overbudget == 1)
                                 @include('components.btnactionlist', [
                                     "is_detail" => false,
-                                    "is_edit" => false,
+                                    "is_edit" => true,
                                     "is_print" => false,
                                     "is_delete" => true,
                                     "url_detail" => "",
-                                    "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
+                                    "url_edit" => "/admin/overbudget/".$item->detail_id."/edit",
                                     "url_delete" => "/admin/overbudget/".$item->detail_id."/".$item->rab_id."/delete",
                                 ])
+                                @endif
+
 
                             </td>
                         </tr>
@@ -104,7 +98,6 @@
                         @endforeach
 
                         @endforeach
-                        @endif
 
 
                     </tbody>
