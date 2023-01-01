@@ -19,6 +19,7 @@ class RABDetail extends Model
         'price',
         'sub_amount',
         'is_overbudget',
+        'is_add',
     ];
 
     /**

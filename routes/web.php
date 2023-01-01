@@ -35,13 +35,13 @@ Route::prefix('admin')->middleware('auth:web')->group(function(){
     
     // OverBudget Routes
 
-    Route::get('overbudget', [OverBudgetController::class, 'index']);
-    Route::post('overbudget', [OverBudgetController::class, 'store']);
-    Route::get('overbudget/{id}/detail', [OverBudgetController::class, 'show']);
-    Route::get('overbudget/{id}/create', [OverBudgetController::class, 'create']);
-    Route::get('overbudget/{id}/edit', [OverBudgetController::class, 'edit']);
-    Route::put('overbudget/{id}/update', [OverBudgetController::class, 'update']);
-    Route::delete('overbudget/{id}/{rab_id}/delete', [OverBudgetController::class, 'destroy']);
+    Route::get('cco', [OverBudgetController::class, 'index']);
+    Route::post('cco', [OverBudgetController::class, 'store']);
+    Route::get('cco/{id}/detail', [OverBudgetController::class, 'show']);
+    Route::get('cco/{id}/create', [OverBudgetController::class, 'create']);
+    Route::get('cco/{id}/edit', [OverBudgetController::class, 'edit']);
+    Route::put('cco/{id}/update', [OverBudgetController::class, 'update']);
+    Route::delete('cco/{id}/{rab_id}/delete', [OverBudgetController::class, 'destroy']);
 
     Route::prefix('masterdata')->group(function(){
 

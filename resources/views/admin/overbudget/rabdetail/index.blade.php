@@ -6,7 +6,7 @@
     <div class="col-md-12">
         @include('components.btnaction', [
             "item" => (Object)[
-                "url" => "/admin/overbudget/".$rab_id."/create",
+                "url" => "/admin/cco/".$rab_id."/create",
                 "name" => "Tambah Pekerjaan"
             ]
         ])
@@ -53,7 +53,7 @@
 
 
         <div class="card">
-            <div class="card-header mt-4"><h3>Over Budget</h3></div>
+            <div class="card-header mt-4"><h3>Change Contract Order</h3></div>
             <div class="card-body">
                 <table class="table table-bordered datatable" id="">
                     <thead>
@@ -62,6 +62,7 @@
                         <th>Volume</th>
                         <th>Harga</th>
                         <th>Sub Total</th>
+                        <th>Tipe CCO</th>
                         <th></th>
                     </thead>
                     <tbody>
@@ -77,6 +78,17 @@
                             <td>{{$item->volume}}</td>
                             <td>@currency($item->price)</td>
                             <td>@currency($item->sub_amount)</td>
+                            <td>
+                                @if ($item->is_add == 1)
+                                    <div class="badge badge-success">
+                                        Penambahan
+                                    </div>
+                                @else
+                                    <div class="badge badge-danger">
+                                        Pengurangan
+                                    </div>
+                                @endif
+                            </td>
                             <td>
                                 @if ($item->is_overbudget == 1)
                                 @include('components.btnactionlist', [

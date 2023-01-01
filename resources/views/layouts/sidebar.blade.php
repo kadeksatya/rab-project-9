@@ -26,7 +26,7 @@
                                     <a href="/admin/masterdata/tool">Alat</a>
                                 </li>
                                 <li>
-                                    <a href="/admin/masterdata/worker">Pekerja</a>
+                                    <a href="/admin/masterdata/worker">Upah Pekerja</a>
                                 </li>
                                 <li>
                                     <a href="/admin/masterdata/worktype">Jenis Pekerjaan</a>
@@ -55,11 +55,11 @@
                             </ul>
                         </li>
                         <li class="nav-item dropdown open">
-                            <a class="dropdown-toggle" href="/admin/overbudget">
+                            <a class="dropdown-toggle" href="/admin/cco">
                                 <span class="icon-holder">
                                     <i class="anticon anticon-area-chart"></i>
                                 </span>
-                                <span class="title">Over Budget</span>
+                                <span class="title">Change Contract Order</span>
                             </a>
                         </li>
                         @if (Auth::user()->role_id == 1)

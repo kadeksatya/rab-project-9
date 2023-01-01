@@ -23,7 +23,7 @@ class OverBudgetController extends Controller
         return view('admin.overbudget.index', [
             'datas' => $data,
             'rab' => $rab,
-            'page_name' => 'Over Budget'
+            'page_name' => 'Change Contract Order'
         ]);
 
     }
@@ -92,13 +92,21 @@ class OverBudgetController extends Controller
             RABDetail::create($form);
 
             $datas = RAB::whereId($request->rab_id)->first();
+            if($request->is_add == 1){
+                $real_cost = RABDetail::where('rab_id', $request->rab_id)->where('is_add', 1)->sum('sub_amount');
 
+                $construction_service = ($datas->construction_service / 100) * $real_cost;
+    
+                $total = $construction_service + $real_cost;
+            }else{
+                $add_cost= RABDetail::where('rab_id', $request->rab_id)->where('is_add', 1)->sum('sub_amount');
+                $min_cost = RABDetail::where('rab_id', $request->rab_id)->where('is_add', 0)->sum('sub_amount');
+                $real_cost = $add_cost - $min_cost;
+                $construction_service = ($datas->construction_service / 100) * $real_cost;
+    
+                $total = $construction_service - $real_cost;
+            }
 
-            $real_cost = RABDetail::where('rab_id', $request->rab_id)->sum('sub_amount');
-
-            $construction_service = ($datas->construction_service / 100) * $real_cost;
-
-            $total = $construction_service + $real_cost;
 
 
             RAB::whereId($request->rab_id)->update([
@@ -107,7 +115,7 @@ class OverBudgetController extends Controller
             ]);
 
             DB::commit();
-            return redirect('/admin/overbudget/'.$request->rab_id.'/detail')->with('message', 'Data successfully created');
+            return redirect('/admin/cco/'.$request->rab_id.'/detail')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;
@@ -186,7 +194,7 @@ class OverBudgetController extends Controller
             DB::commit();
 
 
-            return redirect('/admin/overbudget/'.$datas->work_id.'/detail')->with('message', 'Data successfully created');
+            return redirect('/admin/cco/'.$datas->work_id.'/detail')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;

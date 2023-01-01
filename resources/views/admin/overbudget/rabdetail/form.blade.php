@@ -7,7 +7,7 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="{{ $data == null ? '/admin/overbudget/rabsdetail' : '/admin/overbudget/'.$data->id.'/update' }}" method="POST">
+                <form action="{{ $data == null ? '/admin/cco' : '/admin/cco/'.$data->id.'/update' }}" method="POST">
                 @csrf
 
                 @if ($data == null)
@@ -18,8 +18,17 @@
 
                 
                 <input type="hidden" name="rab_id" value="{{$rab_id}}">
+                <input type="hidden" name="is_overbudget" value="1">
+
                 
                 @if ($data != null)
+                <div class="form-group mb-4">
+                    <label for="">Jenis CCO </label>
+                    <select name="is_add" id="" class="form-control" required>
+                        <option value="1" {{$data->is_add == 1 ? 'selected':''}}>Penambahan</option>
+                        <option value="0" {{$data->is_add == 0 ? 'selected':''}}>Pengurangan</option>
+                    </select>
+                </div>
                 <div class="form-group mb-2 work_category">
                     <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
@@ -42,6 +51,13 @@
                     </select>
                 </div>
                 @else
+                <div class="form-group mb-4">
+                    <label for="">Jenis CCO </label>
+                    <select name="is_add" id="" class="form-control" required>
+                        <option value="1">Penambahan</option>
+                        <option value="0">Pengurangan</option>
+                    </select>
+                </div>
                 <div class="form-group mb-2 work_category">
                     <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
@@ -87,7 +103,7 @@
         </div>
         <div class="card-footer">
             @include('components.btnactionform', [
-                'url_back' => '/admin/overbudget/'.$rab_id.'/detail'
+                'url_back' => '#'
             ])
         </div>
     </form>

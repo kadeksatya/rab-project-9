@@ -6,7 +6,7 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-body">
-                <form action="/admin/overbudget" method="get">
+                <form action="/admin/cco" method="get">
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-8">
@@ -52,10 +52,10 @@
                                         "is_edit" => false,
                                         "is_print" => true,
                                         "is_delete" => false,
-                                        "url_detail" => "/admin/overbudget/".$item->id."/detail",
+                                        "url_detail" => "/admin/cco/".$item->id."/detail",
                                         "url_print" => "/admin/rab/rabs/".$item->id."/print",
-                                        "url_edit" => "/admin/overbudget/".$item->id."/edit",
-                                        "url_delete" => "/admin/overbudget/".$item->id."/delete",
+                                        "url_edit" => "/admin/cco/".$item->id."/edit",
+                                        "url_delete" => "/admin/cco/".$item->id."/delete",
                                     ])
                                 </td>
                             </tr>                            
