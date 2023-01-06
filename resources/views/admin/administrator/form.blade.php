@@ -18,15 +18,15 @@
       
                 <div class="form-group mb-2">
                     <label for="">Nama</label>
-                    <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Jhon Doe">
+                    <input type="text" class="form-control" required name="name" value="{{$data->name ?? ''}}" placeholder="ex . Jhon Doe">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" name="email" value="{{$data->email ?? ''}}" placeholder="ex . jhondoe@mail.com">
+                    <input type="email" class="form-control" required name="email" value="{{$data->email ?? ''}}" placeholder="ex . jhondoe@mail.com">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Username</label>
-                    <input type="text" class="form-control" name="username" value="{{$data->username ?? ''}}" placeholder="ex . jhondoe">
+                    <input type="text" class="form-control" required name="username" value="{{$data->username ?? ''}}" placeholder="ex . jhondoe">
                 </div>
 
                 <div class="form-group mb-2">

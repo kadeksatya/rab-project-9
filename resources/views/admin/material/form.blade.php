@@ -18,23 +18,23 @@
 
                 <div class="form-group mb-2">
                     <label for="">Kode</label>
-                    <input type="text" class="form-control" name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
+                    <input type="text" class="form-control" required name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
                 </div>                
                 <div class="form-group mb-2">
                     <label for="">Nama</label>
-                    <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Semen">
+                    <input type="text" class="form-control" required name="name" value="{{$data->name ?? ''}}" placeholder="ex . Semen">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Satuan</label>
-                    <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . Sak">
+                    <input type="text" class="form-control" required name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . Sak">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Jenis bahan</label>
-                    <input type="text" class="form-control" name="material_type" value="{{$data->material_type ?? ''}}" placeholder="ex . Batu Kapur">
+                    <input type="text" class="form-control" required name="material_type" value="{{$data->material_type ?? ''}}" placeholder="ex . Batu Kapur">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" step="any" min="1" class="form-control" name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
+                    <input type="number" step="any" min="1" class="form-control" required name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
                 </div>
             </div>
         </div>

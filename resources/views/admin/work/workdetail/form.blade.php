@@ -17,19 +17,19 @@
                 @endif
 
                 
-                <input type="hidden" name="work_id" value="{{$work_id}}">
+                <input type="hidden" required name="work_id" value="{{$work_id}}">
 
                 <div class="form-group mb-2">
                     <label for="">Koefisien</label>
-                    <input type="number" step="any" class="form-control koefisien" name="koefisien" value="{{$data->koefisien ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control koefisien" required name="koefisien" value="{{$data->koefisien ?? 0}}" placeholder="ex. 0">
                 </div>
-                <input type="hidden" class="values_id" name="value_id" value="{{$data->value_id ?? ''}}">
+                <input type="hidden" class="values_id" required name="value_id" value="{{$data->value_id ?? ''}}">
 
                 @if ($data != null) 
 
                 <div class="form-group mb-2">
                     <label for="">Type Data</label>
-                    <select name="type_data" id="getDatas" class="form-control">
+                    <select required name="type_data" id="getDatas" class="form-control">
                         <option value="" selected disabled></option>
                         <option value="1" {{$data->type_data == 1 ? 'selected':''}}>Bahan</option>
                         <option value="2" {{$data->type_data == 2 ? 'selected':''}}>Alat</option>
@@ -77,7 +77,7 @@
 
                 <div class="form-group mb-2">
                     <label for="">Type Data</label>
-                    <select name="type_data" id="getDatas" class="form-control">
+                    <select required name="type_data" id="getDatas" class="form-control">
                         <option value="" selected disabled></option>
                         <option value="1">Bahan</option>
                         <option value="2">Alat</option>
@@ -124,15 +124,15 @@
 
                 <div class="form-group mb-2">
                     <label for="">Satuan</label>
-                    <input type="text" class="form-control unit" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
+                    <input type="text" class="form-control unit" required name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" step="any" class="form-control price" name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control price" required name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
-                    <input type="number" step="any" class="form-control sub_total" name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control sub_total" required name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
                 </div>
             </div>
         </div>

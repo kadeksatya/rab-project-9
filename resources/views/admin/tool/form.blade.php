@@ -18,18 +18,18 @@
 
                 <div class="form-group mb-2">
                     <label for="">Kode</label>
-                    <input type="text" class="form-control" name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
+                    <input type="text" class="form-control" required name="code" value="{{$data->code ?? ''}}" placeholder="ex . 001">
                 </div>                <div class="form-group mb-2">
                     <label for="">Nama</label>
-                    <input type="text" class="form-control" name="name" value="{{$data->name ?? ''}}" placeholder="ex . Tang">
+                    <input type="text" class="form-control" required name="name" value="{{$data->name ?? ''}}" placeholder="ex . Tang">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Kapasitas</label>
-                    <input type="text" class="form-control" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . pcs">
+                    <input type="text" class="form-control" required name="unit" value="{{$data->unit ?? ''}}" placeholder="ex . pcs">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" step="any" min="1" class="form-control" name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
+                    <input type="number" step="any" min="1" class="form-control" required name="price" value="{{$data->price ?? ''}}" placeholder="ex . 100000">
                 </div>
             </div>
         </div>
