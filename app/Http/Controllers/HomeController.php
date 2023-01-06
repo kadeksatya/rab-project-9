@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RAB;
 use App\Models\Worker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -15,11 +16,53 @@ class HomeController extends Controller
         $project = RAB::count();
         $worker = Worker::count();
 
+
+        // Chart Jumlah Proyek Per tahun
+
+        $month = [];
+        $healing = [];
+        $piutang = [];
+
+        // return RAB::all();
+
+        for ($m=2019; $m < date('Y'); $m++) { 
+            $month[] = date('Y', mktime(0,0,0,1, 1, $m));
+
+            $datas_pertahun = RAB::select(DB::raw("SUM(rounded_up_cost) as totals"))
+                ->whereYear('created_at', $m)
+                ->groupBy(DB::raw("YEAR(created_at)"))
+                ->first();
+
+
+            $healing[] = $datas_pertahun ? $datas_pertahun->totals : 0;
+        }
+
+         $labels_pertahun = $month;
+         $datasets_pertahun = $healing;
+
+
+        //  Chart RAB tertinggi
+        $data_label_rabTeringgi = [];
+         $label_rabTeringgi = RAB::select('name')->get();
+        foreach ($label_rabTeringgi as $item) {
+            $data_label_rabTeringgi[] = $item->name;
+        }
+
+        $labels_rabTerr = $data_label_rabTeringgi;
+        $data_rabTertinggi = RAB::select('name',DB::raw("SUM(rounded_up_cost) as totals"))
+        ->groupBy('name')
+        ->get();
+
+
+
         return view('admin.dashboard.index', [
             'page_name' => 'Dashboard',
             'project' => $project,
             'worker' => $worker,
-
+            'labels_pertahun' => $labels_pertahun,
+            'datasets_pertahun' => $datasets_pertahun,
+            'labels_rabTerr' => $labels_rabTerr,
+            'data_rabTertinggi' => $data_rabTertinggi,
         ]);
     }
 }
