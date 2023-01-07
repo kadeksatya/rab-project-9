@@ -78,6 +78,32 @@ class RABController extends Controller
      */
     public function show($id)
     {
+
+        $datas = RAB::whereId($id)->first();
+
+            $totals = 0;
+
+            $real_cost = RABDetail::where('rab_id', $id)
+            ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
+            ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
+            ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
+            ->get();
+
+            foreach ($real_cost as $item) {
+                $totals += $item->volume * $item->total_amount;
+            }
+
+
+            $construction_service = ($datas->construction_service / 100) * $totals;
+
+            $total = $construction_service + $totals;
+
+            RAB::whereId($id)->update([
+                'real_cost' => $totals,
+                'rounded_up_cost' => round($total)
+            ]);
+
+
         $datas = DB::table('r_a_b_details')
         ->where('rab_id', $id)
         ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')

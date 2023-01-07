@@ -29,13 +29,16 @@
                             <td colspan="7">{{$key}}</td>
                         </tr>
                         @foreach ($value as $item)
+                        @php
+                            $totals = $item->volume * $item->total_amount;
+                        @endphp
                         @if ($item->is_overbudget == 0)
                         <tr>
                             <td></td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->volume}}</td>
-                            <td>@currency($item->price)</td>
-                            <td>@currency($item->sub_amount)</td>
+                            <td>@currency($item->total_amount)</td>
+                            <td>@currency($totals)</td>
                             <td>
                                 
 
@@ -71,13 +74,16 @@
                             <td colspan="7">{{$key}}</td>
                         </tr>
                         @foreach ($value as $item)
+                        @php
+                            $totals_1 = $item->volume * $item->total_amount;
+                        @endphp
                         @if ($item->is_overbudget == 1)
                         <tr>
                             <td></td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->volume}}</td>
-                            <td>@currency($item->price)</td>
-                            <td>@currency($item->sub_amount)</td>
+                            <td>@currency($item->total_amount)</td>
+                            <td>@currency($totals_1)</td>
                             <td>
                                 @if ($item->is_add == 1)
                                     <div class="badge badge-success">
@@ -97,8 +103,8 @@
                                     "is_print" => false,
                                     "is_delete" => true,
                                     "url_detail" => "",
-                                    "url_edit" => "/admin/overbudget/".$item->detail_id."/edit",
-                                    "url_delete" => "/admin/overbudget/".$item->detail_id."/".$item->rab_id."/delete",
+                                    "url_edit" => "/admin/cco/".$item->detail_id."/edit",
+                                    "url_delete" => "/admin/cco/".$item->detail_id."/".$item->rab_id."/delete",
                                 ])
                                 @endif
 

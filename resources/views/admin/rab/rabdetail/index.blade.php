@@ -23,18 +23,23 @@
                         <th>Sub Total</th>
                         <th></th>
                     </thead>
+
+
                     <tbody>
                         @foreach ($datas as $key => $value)
                         <tr>
                             <td colspan="7">{{$key}}</td>
                         </tr>
                         @foreach ($value as $item)
+                        @php
+                            $totals = $item->volume * $item->total_amount;
+                        @endphp
                         <tr>
                             <td></td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->volume}}</td>
-                            <td>@currency($item->price)</td>
-                            <td>@currency($item->sub_amount)</td>
+                            <td>@currency($item->total_amount)</td>
+                            <td>@currency($totals)</td>
                             <td>
                                 @if ($item->is_overbudget == 0)
                                 @include('components.btnactionlist', [

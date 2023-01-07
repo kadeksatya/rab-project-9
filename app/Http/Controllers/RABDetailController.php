@@ -112,11 +112,9 @@ class RABDetailController extends Controller
      */
     public function edit($id)
     {
-        $data = RABDetail::find($id);
+        $data = RABDetail::with(['work'])->find($id);
         $workcategory = WorkType::all();
-        $work = Work::all();
-        
-        
+        $work = Work::all();    
 
         return view('admin.rab.rabdetail.form', [
             'page_name' => 'Add RAB Detail',
