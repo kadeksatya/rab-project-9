@@ -61,18 +61,9 @@ class HomeController extends Controller
     
         $rabs_datas = [];
 
-    $datasettts = RAB::all();
-    $datasettts_1 = RABDetail::all();
-       
-   foreach ($datasettts as $value) {
-    $datas_2 = RABDetail::where('rab_id', $value)->where('is_overbudget', 0)->sum('sub_amount');
-        $rabs_datas[] = $datas_2;
-    
-   }
 
-   return $rabs_datas;
    
-    // $rabs_datas = RABDetail::where('is_overbudget', 0)->select(DB::raw('SUM(sub_amount) as total_rabs'))->groupBy('rab_id')->get();
+    $rabs_datas = RABDetail::where('is_overbudget', 0)->select(DB::raw('SUM(sub_amount) as total_rabs'))->groupBy('rab_id')->get();
     $cco_datas = RABDetail::where('is_overbudget', 1)->select(DB::raw('SUM(sub_amount) as total_ccos'))->groupBy('rab_id')->get();
 
         
