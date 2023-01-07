@@ -53,6 +53,7 @@
 
 
 
+
 @endsection
 @push('script')
 <script src="{{asset('assets/vendors/chartjs/Chart.min.js')}}"></script>
@@ -67,19 +68,23 @@
             const barConfig1 = new Chart(barCtx1, {
                 type: 'bar',
                 data: {
-                    labels: ['2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018'],
-                    datasets: [{
-                            label: 'Series A',
-                            backgroundColor: 'rgb(255, 99, 132)',
-                            borderWidth: 0,
-                            data: [56, 55, 40, 37, 54, 76, 63, 62]
+                    labels: {{ Js::from($labels_rabTerr) }},
+                    datasets: [
+                        {
+                            label: 'RAB',
+                            backgroundColor: 'blue',
+                            stacked:"RAB",
+                            borderWidth: 1,
+                            data: [@foreach ($rabs_datas as $i){{$i['total_rabs']}}, @endforeach]
+
                         },
                         {
-                            label: 'Series B',
-                            backgroundColor: 'rgb(54, 162, 235)',
+                            label: 'CCO',
+                            backgroundColor: 'rgb(255, 99, 132)',
+                            stacked:"CCO",
                             borderWidth: 0,
-                            data: [86, 27, 90, 43, 65, 76, 87, 85]
-                        }
+                            data: [@foreach ($cco_datas as $i){{$i['total_ccos']}}, @endforeach]
+                        },
                     ]
                 },
 
@@ -87,48 +92,17 @@
                     scaleShowVerticalLines: false,
                     responsive: true,
                     scales: {
-                        xAxes: [{
-                            categoryPercentage: 0.45,
-                            barPercentage: 0.70,
-                            display: true,
-                            scaleLabel: {
-                                display: false,
-                                labelString: 'Month'
-                            },
-                            gridLines: false,
-                            ticks: {
-                                display: true,
-                                beginAtZero: true,
-                                fontSize: 13,
-                                padding: 10
-                            }
-                        }],
-                        yAxes: [{
-                            categoryPercentage: 0.35,
-                            barPercentage: 0.70,
-                            display: true,
-                            scaleLabel: {
-                                display: false,
-                                labelString: 'Value'
-                            },
-                            gridLines: {
-                                drawBorder: false,
-                                offsetGridLines: false,
-                                drawTicks: false,
-                                borderDash: [3, 4],
-                                zeroLineWidth: 1,
-                                zeroLineBorderDash: [3, 4]
-                            },
-                            ticks: {
-                                max: 100,
-                                stepSize: 20,
-                                display: true,
-                                beginAtZero: true,
-                                fontSize: 13,
-                                padding: 10
-                            }
-                        }]
-                    }
+						xAxes: [{
+							ticks: {
+								beginAtZero:true
+							},
+						}],
+						yAxes: [{
+							ticks: {
+								beginAtZero:true
+							}
+						}],
+					},
                 }
             });
 
