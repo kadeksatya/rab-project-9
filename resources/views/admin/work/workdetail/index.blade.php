@@ -36,7 +36,15 @@
                                 </td>
                                 <td>{{$item->koefisien}}</td>
                                 <td>{{$item->unit}}</td>
-                                <td>{{$item->sub_amount ?? 0}}</td>
+                                <td>
+                                    @if ($item->type_data == 1)
+                                        {{$item->material->price ?? '-'}}
+                                    @elseif ($item->type_data == 2)
+                                        {{$item->tool->price ?? '-'}}
+                                    @elseif ($item->type_data == 3)
+                                        {{$item->worker->price ?? '-'}}
+                                    @endif
+                                </td>
                                 <td>
                                     @include('components.btnactionlist', [
                                         "is_detail" => false,

@@ -100,7 +100,7 @@ class WorkDetailController extends Controller
      */
     public function edit($id)
     {
-        $data = WorkDetail::find($id);
+        $data = WorkDetail::whereId($id)->with(['worker','material','tool'])->first();
         $material = Material::all();
         $tool = Tool::all();
         $worker = Worker::all();

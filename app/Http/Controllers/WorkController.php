@@ -80,7 +80,27 @@ class WorkController extends Controller
      */
     public function show($id)
     {
-        $datas = WorkDetail::where('work_id', $id)->get();
+       
+       
+        $datas = WorkDetail::where('work_id', $id)->with(['worker','material','tool'])->get();
+        
+        $totals = 0;
+        foreach ($datas as $item) {
+            if($item->type_data == 1){
+                $totals += $item->material->price * $item->koefisien;
+            }
+            elseif($item->type_data == 2){
+                $totals += $item->tool->price * $item->koefisien;
+            }
+            elseif($item->type_data == 3){
+                $totals += $item->worker->price * $item->koefisien;
+            }
+        }
+
+
+        Work::whereId($id)->update([
+            'total_amount' => $totals
+        ]);
 
         return view('admin.work.workdetail.index', [
             'page_name' => 'Detail Pekerjaan',

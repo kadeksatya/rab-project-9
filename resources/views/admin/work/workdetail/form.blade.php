@@ -73,6 +73,42 @@
                     </select>
                 </div>
 
+
+                <div class="form-group mb-2">
+                    <label for="">Satuan</label>
+                    <input type="text" class="form-control unit" required name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
+                </div>
+                @if ($data->type_data == 1)
+                <div class="form-group mb-2">
+                    <label for="">Harga</label>
+                    <input type="number" step="any" class="form-control price" required name="price" value="{{$data->material->price}}" placeholder="ex. 0">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="">Sub Total</label>
+                    <input type="number" step="any" class="form-control sub_total" required name="sub_amount" value="{{$data->material->price * $data->koefisien}}" placeholder="ex. 0">
+                </div>
+
+                @elseif ($data->type_data == 2)
+                <div class="form-group mb-2">
+                    <label for="">Harga</label>
+                    <input type="number" step="any" class="form-control price" required name="price" value="{{$data->tool->price}}" placeholder="ex. 0">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="">Sub Total</label>
+                    <input type="number" step="any" class="form-control sub_total" required name="sub_amount" value="{{$data->tool->price * $data->koefisien}}" placeholder="ex. 0">
+                </div>
+                @elseif ($data->type_data == 3)
+                <div class="form-group mb-2">
+                    <label for="">Harga</label>
+                    <input type="number" step="any" class="form-control price" required name="price" value="{{$data->worker->price}}" placeholder="ex. 0">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="">Sub Total</label>
+                    <input type="number" step="any" class="form-control sub_total" required name="sub_amount" value="{{$data->worker->price * $data->koefisien}}" placeholder="ex. 0">
+                </div>
+                @endif
+                
+                
                 @else
 
                 <div class="form-group mb-2">
@@ -119,21 +155,24 @@
                     </select>
                 </div>
 
-                @endif 
-
 
                 <div class="form-group mb-2">
                     <label for="">Satuan</label>
-                    <input type="text" class="form-control unit" required name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
+                    <input type="text" class="form-control unit" required name="unit"  placeholder="ex. pcs">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" step="any" class="form-control price" required name="price" value="{{$data->price ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control price" required name="price"  placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
-                    <input type="number" step="any" class="form-control sub_total" required name="sub_amount" value="{{$data->sub_amount ?? 0}}" placeholder="ex. 0">
+                    <input type="number" step="any" class="form-control sub_total" required name="sub_amount"  placeholder="ex. 0">
                 </div>
+
+                @endif 
+
+
+                
             </div>
         </div>
         <div class="card-footer">
