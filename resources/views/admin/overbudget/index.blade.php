@@ -53,7 +53,7 @@
                                         "is_print" => true,
                                         "is_delete" => false,
                                         "url_detail" => "/admin/cco/".$item->id."/detail",
-                                        "url_print" => "/admin/rab/rabs/".$item->id."/print",
+                                        "url_print" => "/admin/rab/rabs/".$item->id."/print?title=2",
                                         "url_edit" => "/admin/cco/".$item->id."/edit",
                                         "url_delete" => "/admin/cco/".$item->id."/delete",
                                     ])

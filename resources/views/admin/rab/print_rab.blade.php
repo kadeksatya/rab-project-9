@@ -21,7 +21,7 @@
 
 <body>
     <center>
-        <h2>Rencana Anggaran Biaya</h2>
+        <h2>{{$title}}</h2>
         <h4>CV. Aditya Bangun Perkasa</h4>
         <h5></h5>
 
@@ -39,25 +39,36 @@
             <th>Jumlah Satuan</th>
         </thead>
         <tbody>
+
             @php
-                $no_awal = 1;
-                $no_sub = 1;
+                $huruf = 'A';                
             @endphp
 
             @foreach ($detail as $key => $value)
+
+
             <tr>
-                <td>{{$no_awal++}}</td>
+                <td>{{$huruf++}}</td>
                 <td colspan="5">{{$key}}</td>
             </tr>
+
+
+            @php
+                $number = 1;                
+            @endphp
+
+            
             @foreach ($value as $item)
+
             <tr>
-                <td class="text-right">1</td>
+                <td class="text-right">{{$number++}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->volume}}</td>
                 <td>{{$item->unit}}</td>
                 <td>@currency($item->price).00</td>
                 <td>@currency($item->sub_amount).00</td>
             </tr>
+
             @endforeach
 
             @endforeach

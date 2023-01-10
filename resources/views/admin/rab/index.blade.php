@@ -34,7 +34,7 @@
                                         "is_print" => true,
                                         "is_delete" => false,
                                         "url_detail" => "/admin/rab/rabs/".$item->id."/detail",
-                                        "url_print" => "/admin/rab/rabs/".$item->id."/print",
+                                        "url_print" => "/admin/rab/rabs/".$item->id."/print?title=1",
                                         "url_edit" => "/admin/rab/rabs/".$item->id."/edit",
                                         "url_delete" => "/admin/rab/rabs/".$item->id."/delete",
                                     ])

@@ -14,6 +14,9 @@ class HomeController extends Controller
     {
         # code...
 
+
+
+
         $project = RAB::count();
         $worker = Worker::count();
 
@@ -26,10 +29,10 @@ class HomeController extends Controller
 
         // return RAB::all();
 
-        for ($m=2019; $m < date('Y'); $m++) { 
+        for ($m=2019; $m <= date('Y'); $m++) { 
             $month[] = date('Y', mktime(0,0,0,1, 1, $m));
 
-            $datas_pertahun = RAB::select(DB::raw("SUM(rounded_up_cost) as totals"))
+            $datas_pertahun = RAB::select(DB::raw("COUNT(*) as totals"))
                 ->whereYear('created_at', $m)
                 ->groupBy(DB::raw("YEAR(created_at)"))
                 ->first();
@@ -40,6 +43,7 @@ class HomeController extends Controller
 
          $labels_pertahun = $month;
          $datasets_pertahun = $healing;
+
 
 
         //  Chart RAB tertinggi
@@ -53,6 +57,20 @@ class HomeController extends Controller
         $data_rabTertinggi = RAB::select('name',DB::raw("SUM(rounded_up_cost) as totals"))
         ->groupBy('name')
         ->get();
+
+        $counts = $data_rabTertinggi->count();
+        $colors = [];
+
+        for ($i=0; $i <= $counts ; $i++) { 
+            $rand = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
+            $color = '#'.$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)].$rand[rand(0,15)];
+
+            $colors[] = $color;
+        }
+
+        
+
+
 
 
 
@@ -80,6 +98,7 @@ class HomeController extends Controller
             'data_rabTertinggi' => $data_rabTertinggi,
             'rabs_datas' => $rabs_datas,
             'cco_datas' => $cco_datas,
+            'colors' => $colors
         ]);
     }
 }

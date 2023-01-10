@@ -94,12 +94,18 @@
                     scales: {
 						xAxes: [{
 							ticks: {
-								beginAtZero:true
+								beginAtZero:true,
+                                callback: function(value, index, values) {
+                                    return value.toLocaleString("id",{style:"currency", currency:"IDR"});
+                                }
 							},
 						}],
 						yAxes: [{
 							ticks: {
-								beginAtZero:true
+								beginAtZero:true,
+                                callback: function(value, index, values) {
+                                    return value.toLocaleString("id",{style:"currency", currency:"IDR"});
+                                }
 							}
 						}],
 					},
@@ -152,6 +158,7 @@
             const barChart3 = document.getElementById("bar-chart-nilai-project");
             const barCtx3 = barChart3.getContext('2d');
             var labels_rabTer = {{ Js::from($labels_rabTerr) }};
+            var colors = {{ Js::from($colors) }};
             barChart3.height = 120;
             const barConfig3 = new Chart(barCtx3, {
                 type: 'bar',
@@ -161,7 +168,7 @@
                         @foreach ($data_rabTertinggi as $item)
                         {
                             label: '{{$item->name}}',
-                            backgroundColor: 'rgb(255, 99, 132)',
+                            backgroundColor: colors,
                             borderWidth: 0,
                             data: [{{$item->totals}}]
                         },
@@ -175,12 +182,18 @@
                     scales: {
 						xAxes: [{
 							ticks: {
-								beginAtZero:true
+								beginAtZero:true,
+                                callback: function(value, index, values) {
+                                    return value.toLocaleString("id",{style:"currency", currency:"IDR"});
+                                }
 							},
 						}],
 						yAxes: [{
 							ticks: {
-								beginAtZero:true
+								beginAtZero:true,
+                                callback: function(value, index, values) {
+                                    return value.toLocaleString("id",{style:"currency", currency:"IDR"});
+                                }
 							}
 						}],
 					},

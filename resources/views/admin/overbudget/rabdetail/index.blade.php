@@ -31,6 +31,10 @@
                         @foreach ($value as $item)
                         @php
                             $totals = $item->volume * $item->total_amount;
+                            $jumlah_1 = 0;
+                            $jumlah_1 += $totals;
+                            $jumlah_2 = $value->where('is_overbudget', 0)->sum('total_amount');
+                            
                         @endphp
                         @if ($item->is_overbudget == 0)
                         <tr>
@@ -48,6 +52,18 @@
                         @endforeach
 
                         @endforeach
+                        <tr>
+                            <td></td>
+                            <td>Jumlah</td>
+                            <td></td>
+                            <td>
+                                @currency($jumlah_2)
+                            </td>
+                            <td>
+                                @currency($jumlah_1)
+
+                            </td>
+                        </tr>
 
                     </tbody>
                 </table>
@@ -76,6 +92,9 @@
                         @foreach ($value as $item)
                         @php
                             $totals_1 = $item->volume * $item->total_amount;
+                            $jumlah_12 = 0;
+                            $jumlah_12 += $totals;
+                            $jumlah_22 = $value->where('is_overbudget', 1)->sum('total_amount');
                         @endphp
                         @if ($item->is_overbudget == 1)
                         <tr>
@@ -117,6 +136,20 @@
 
                         @endforeach
 
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>Jumlah</td>
+                            <td></td>
+                            <td>
+                                @currency($jumlah_22)
+                            </td>
+                            <td>
+                                @currency($jumlah_12)
+
+                            </td>
+                            <td></td>
+                        </tr>
 
                     </tbody>
                 </table>
