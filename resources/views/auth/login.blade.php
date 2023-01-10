@@ -30,8 +30,8 @@
                     <img src="assets/images/logo/android-chrome-192x192.png" width="50px" alt="">
                 </div>
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-md-5">
+                    <div class="row align-items-center w-100">
+                        <div class="col-md-5 m-h-auto">
                             <div class="card">
                                 <div class="card-body">
                                     <h2 class="m-t-20">Sign In</h2>
