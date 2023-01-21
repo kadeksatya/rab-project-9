@@ -54,8 +54,8 @@
                         @endforeach
                         <tr>
                             <td></td>
-                            <td>Jumlah</td>
                             <td></td>
+                            <td><strong>Jumlah</strong></td>
                             <td>
                                 @currency($jumlah_2)
                             </td>
@@ -139,7 +139,7 @@
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>Jumlah</td>
+                            <td><strong>Jumlah</strong></td>
                             <td></td>
                             <td>
                                 @currency($jumlah_22)

@@ -38,7 +38,7 @@
     <div class="col-md-6 col-lg-12">
         <div class="card">
             <div class="card-header m-3">
-                <h3>Perbandingan RAB & COA</h3>
+                <h3>Perbandingan RAB & CCO</h3>
             </div>
             <div class="card-body">
 

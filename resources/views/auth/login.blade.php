@@ -30,12 +30,22 @@
                     <img src="assets/images/logo/android-chrome-192x192.png" width="50px" alt="">
                 </div>
                 <div class="container">
+                    <div class="text-center mb-3">
+                        
+                    <h3>
+                        Sistem Informasi Rencana Anggaran Biaya (RAB) Proyek CV. Aditya Bangun Perkasa
+
+                    </h3>
+                    <h2>
+                        Login
+                    </h2>
+                    </div>
                     <div class="row align-items-center w-100">
                         <div class="col-md-5 m-h-auto">
+                            
                             <div class="card">
+                                
                                 <div class="card-body">
-                                    <h2 class="m-t-20">Sign In</h2>
-                                    <p class="m-b-30">Enter your credential to get access</p>
                                     <form action="/login" method="POST">
                                         @csrf
                                         <div class="form-group">

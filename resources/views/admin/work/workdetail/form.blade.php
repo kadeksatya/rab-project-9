@@ -100,11 +100,11 @@
                 @elseif ($data->type_data == 3)
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" readonly step="any" class="form-control price" required name="price" value="{{$data->worker->price}}" placeholder="ex. 0">
+                    <input type="number" readonly step="any" readonly class="form-control price" required name="price" value="{{$data->worker->price}}" placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
-                    <input type="number" readonly step="any" class="form-control sub_total" required name="sub_amount" value="{{$data->worker->price * $data->koefisien}}" placeholder="ex. 0">
+                    <input type="number" readonly step="any" readonly class="form-control sub_total" required name="sub_amount" value="{{$data->worker->price * $data->koefisien}}" placeholder="ex. 0">
                 </div>
                 @endif
                 
