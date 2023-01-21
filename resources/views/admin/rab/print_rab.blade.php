@@ -113,10 +113,10 @@
                 <td class="text-right">{{$number++}}</td>
                 <td>{{$item->name}}</td>
 
-                <td>{{$item->volume}}</td>
-                <td>{{$item->unit}}</td>
-                <td>@currency($item->price).00</td>
-                <td>@currency($item->sub_amount).00</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
                
                 @if ($item->is_overbudget == 1)
                 @if ($item->is_add == 1)
@@ -153,10 +153,10 @@
                 <td class="text-right">{{$number++}}</td>
                 <td>{{$item->name}}</td>
 
-                <td>{{$item->volume}}</td>
-                <td>{{$item->unit}}</td>
-                <td>@currency($item->price).00</td>
-                <td>@currency($item->sub_amount).00</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
                
                 @if ($item->is_overbudget == 1)
                 @if ($item->is_add == 1)

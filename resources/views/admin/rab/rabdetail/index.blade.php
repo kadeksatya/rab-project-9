@@ -6,7 +6,7 @@
     <div class="col-md-12">
         @include('components.btnaction', [
             "item" => (Object)[
-                "url" => "/admin/cco/".$rab_id."/create",
+                "url" => "/admin/rab/rabs/rabsdetail/".$rab_id."/create",
                 "name" => "Tambah Pekerjaan"
             ]
         ])
