@@ -100,7 +100,8 @@ class RABController extends Controller
 
             RAB::whereId($id)->update([
                 'real_cost' => $totals,
-                'rounded_up_cost' => round($total)
+                'rounded_up_cost' => round($total),
+                'project_date' => $datas->project_date
             ]);
 
 
@@ -148,6 +149,14 @@ class RABController extends Controller
             ->groupBy('category_name');
 
             $titles = 'Rencana Anggaran Biaya';
+
+            $datas = RAB::whereId($id)->first();
+            return view('admin.rab.print_rab_only', [
+                'page_name' => 'Print RAB'.' '.$datas->name,
+                'title' => $titles,
+                'data' => $datas,
+                'detail' => $details,
+            ]);
         }else{
             $titles = 'CHANGE CONTRACT ORDER';
             $details = DB::table('r_a_b_details')
@@ -158,15 +167,17 @@ class RABController extends Controller
             ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
             ->get()
             ->groupBy('category_name');
+
+            $datas = RAB::whereId($id)->first();
+            return view('admin.rab.print_rab', [
+                'page_name' => 'Print RAB'.' '.$datas->name,
+                'title' => $titles,
+                'data' => $datas,
+                'detail' => $details,
+            ]);
         }
 
-        $datas = RAB::whereId($id)->first();
-        return view('admin.rab.print_rab', [
-            'page_name' => 'Print RAB'.' '.$datas->name,
-            'title' => $titles,
-            'data' => $datas,
-            'detail' => $details,
-        ]);
+        
     }
 
 

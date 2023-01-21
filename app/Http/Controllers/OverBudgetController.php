@@ -58,7 +58,9 @@ class OverBudgetController extends Controller
 
             RAB::whereId($id)->update([
                 'real_cost' => $totals,
-                'rounded_up_cost' => round($total)
+                'rounded_up_cost' => round($total),
+                'project_date' => $datas->project_date
+                
             ]);
 
         $datas = DB::table('r_a_b_details')
@@ -136,7 +138,9 @@ class OverBudgetController extends Controller
 
             RAB::whereId($request->rab_id)->update([
                 'real_cost' => $real_cost,
-                'rounded_up_cost' => round($total)
+                'rounded_up_cost' => round($total),
+                'project_date' => $datas->project_date
+
             ]);
 
             DB::commit();

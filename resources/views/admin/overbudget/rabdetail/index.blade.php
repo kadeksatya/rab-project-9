@@ -57,10 +57,12 @@
                             <td></td>
                             <td><strong>Jumlah</strong></td>
                             <td>
-                                @currency($jumlah_2)
+                                {{-- @currency($jumlah_2) --}}
                             </td>
                             <td>
-                                @currency($jumlah_1)
+                                @if (isset($jumlah_1))
+                                    @currency($jumlah_1)
+                                @endif
 
                             </td>
                         </tr>
@@ -144,10 +146,12 @@
                             </td>
                             <td></td>
                             <td>
-                                @currency($jumlah_22)
+                                {{-- @currency($jumlah_22) --}}
                             </td>
                             <td>
-                                @currency($jumlah_12)
+                                @if (isset($jumlah_12))
+                                    @currency($jumlah_12)
+                                @endif
 
                             </td>
                             <td></td>

@@ -32,6 +32,7 @@
                         @php
                             $totals = $item->volume * $item->total_amount;
                             $jumlah_1 = 0;
+                            $jumlah_2 = 0;
                             $jumlah_1 += $totals;
                             $jumlah_2 = $value->where('is_overbudget', 0)->sum('total_amount');
                             
@@ -57,10 +58,14 @@
                             <td></td>
                             <td><strong>Jumlah</strong></td>
                             <td>
-                                @currency($jumlah_2)
+                                @if (isset($jumlah_2))
+                                    {{-- @currency($jumlah_2) --}}
+                                @endif
                             </td>
                             <td>
-                                @currency($jumlah_1)
+                                @if (isset($jumlah_1))
+                                    @currency($jumlah_1)
+                                @endif
 
                             </td>
                         </tr>
@@ -142,10 +147,14 @@
                             <td><strong>Jumlah</strong></td>
                             <td></td>
                             <td>
-                                @currency($jumlah_22)
+                                @if (isset($jumlah_2))
+                                    {{-- @currency($jumlah_2) --}}
+                                @endif
                             </td>
                             <td>
-                                @currency($jumlah_12)
+                                @if (isset($jumlah_12))
+                                    @currency($jumlah_12)
+                                @endif
 
                             </td>
                             <td></td>
