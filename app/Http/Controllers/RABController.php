@@ -91,7 +91,7 @@ class RABController extends Controller
             ->get();
 
             foreach ($real_cost as $item) {
-                $totals += $item->volume * $item->total_amount;
+                $totals += $item->volume * $item->price;
             }
 
 

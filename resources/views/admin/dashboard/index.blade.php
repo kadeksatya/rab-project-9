@@ -165,20 +165,22 @@
                 data: {
                     labels: labels_rabTer,
                     datasets: [
-                        @foreach ($data_rabTertinggi as $item)
+                        
                         {
-                            label: '{{$item->name}}',
+                            label: 'RAB',
                             backgroundColor: colors,
                             borderWidth: 0,
-                            data: [{{$item->totals}}]
+                            data: [@foreach ($data_rabTertinggi as $i){{$i['totals']}}, @endforeach]
                         },
-                        @endforeach
                     ]
                 },
 
                 options: {
                     scaleShowVerticalLines: false,
                     responsive: true,
+                    legend: {
+                        display: false
+                    },
                     scales: {
 						xAxes: [{
 							ticks: {
