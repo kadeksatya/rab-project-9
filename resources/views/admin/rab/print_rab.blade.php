@@ -154,6 +154,8 @@
                 <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
                 <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">@currency($item->sub_amount).00</td>
                 @endif
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->is_add == 1 ? 'Betambah':'Berkurang'}}</td>   
+
                 @else
                     <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
                     <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
@@ -161,9 +163,9 @@
                     <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
                     <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
                     <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}"></td>
                 @endif
                 
-                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->is_add == 1 ? 'Betambah':'Berkurang'}}</td>   
                 
                 
                 

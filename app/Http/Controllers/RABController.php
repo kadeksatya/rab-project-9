@@ -113,7 +113,7 @@ class RABController extends Controller
         ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
         ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
         ->join('r_a_b_s', 'r_a_b_details.rab_id', '=', 'r_a_b_s.id')
-        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*','r_a_b_s.*')
+        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*','works.name as work_names','r_a_b_s.*')
         ->get()
         ->groupBy('category_name');
 
@@ -148,7 +148,8 @@ class RABController extends Controller
             ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
             ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
             ->where('r_a_b_details.is_overbudget', 0)
-            ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
+            ->join('r_a_b_s', 'r_a_b_details.rab_id', '=', 'r_a_b_s.id')
+            ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*','works.name as work_names','r_a_b_s.*')
             ->get()
             ->groupBy('category_name');
 
@@ -160,6 +161,7 @@ class RABController extends Controller
                 'title' => $titles,
                 'data' => $datas,
                 'detail' => $details,
+                'getDataRab' => $datas->rab_cost
             ]);
         }else{
             $titles = 'CHANGE CONTRACT ORDER';
