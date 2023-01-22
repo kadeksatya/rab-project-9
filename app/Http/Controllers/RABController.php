@@ -161,7 +161,6 @@ class RABController extends Controller
             $titles = 'CHANGE CONTRACT ORDER';
             $details = DB::table('r_a_b_details')
             ->where('rab_id', $id)
-            ->where('is_overbudget', 1)
             ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
             ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
             ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')

@@ -41,7 +41,7 @@
 
                 <div class="form-group mb-2 material {{$data->type_data == 1 ? '':'d-none'}}">
                     <label for="">Nama Bahan</label>
-                    <select id="" class="form-control material_input">
+                    <select id="" class="select2 material_input" style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($material as $item)
                             <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}" {{$data->value_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
@@ -53,7 +53,7 @@
 
                 <div class="form-group mb-2 tool {{$data->type_data == 2 ? '':'d-none'}}">
                     <label for="">Nama Alat</label>
-                    <select id="" class="form-control tool_input">
+                    <select id="" class="select2 tool_input"  style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($tool as $item)
                             <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}" {{$data->value_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
@@ -65,7 +65,7 @@
 
                 <div class="form-group mb-2 worker {{$data->type_data == 3 ? '':'d-none'}}">
                     <label for="">Name Pekerja</label>
-                    <select id="" class="form-control worker_input">
+                    <select id="" class="select2 worker_input"  style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($worker as $item)
                             <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}" {{$data->value_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
@@ -123,7 +123,7 @@
 
                 <div class="form-group mb-2 material d-none">
                     <label for="">Nama Bahan</label>
-                    <select id="" class="form-control material_input">
+                    <select id="" class="select2 material_input" style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($material as $item)
                             <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
@@ -135,7 +135,7 @@
 
                 <div class="form-group mb-2 tool d-none">
                     <label for="">Nama Bahan</label>
-                    <select id="" class="form-control tool_input">
+                    <select id="" class="select2 tool_input"  style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($tool as $item)
                             <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
@@ -147,7 +147,7 @@
 
                 <div class="form-group mb-2 worker d-none">
                     <label for="">Nama Pekerja</label>
-                    <select id="" class="form-control worker_input">
+                    <select id="" class=" select2 worker_input"  style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($worker as $item)
                             <option value="{{$item->id}}" data-price="{{$item->price}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
@@ -185,10 +185,18 @@
 </div>
 @endsection
 
+@push('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" />
+
+@endpush
+
 @push('script')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
 
 <script>
     $(document).ready(function () {
+        $(".select2").select2();
 
         let material = $(".material");
         let tool = $(".tool");

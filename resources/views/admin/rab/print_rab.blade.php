@@ -29,8 +29,12 @@
                 background-color: #56caa8 !important;
                 print-color-adjust: exact; 
             }
-            td.bertambah {
+            th.bertambah {
                 background-color: #56caa8 !important;
+                print-color-adjust: exact; 
+            }
+            td.is_overbudget {
+                background-color: #ca8256 !important;
                 print-color-adjust: exact; 
             }
         }
@@ -41,6 +45,9 @@
             }
             .betambah th {
                 color: white !important;
+            }
+            .is_overbudget td {
+                color: black !important;
             }
         }
         </style>
@@ -72,19 +79,19 @@
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="berkurang">Volume bertambah</td>
-                <td class="berkurang">Jumlah Bertambah (Rp.)</td>
-                <td class="bertambah">Volume Berkurang </td>
-                <td class="bertambah">Jumlah Berkurang (Rp.)</td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th class="berkurang">Volume bertambah</th>
+                <th class="berkurang">Jumlah Bertambah (Rp.)</th>
+                <th class="bertambah">Volume Berkurang </th>
+                <th class="bertambah">Jumlah Berkurang (Rp.)</th>
+                <th></th>
+                <th></th>
+                <th></th>
                 
             </tr>
 
@@ -107,88 +114,60 @@
 
             
             @foreach ($value as $item)
-            @if ($item->is_overbudget == 1)
 
-            <tr style="background-color: #ff000054">
-                <td class="text-right">{{$number++}}</td>
-                <td>{{$item->name}}</td>
+            <tr class="{{$item->is_overbudget == 1 ? 'is_overbudget':''}}"
+            
+                @if ($item->is_overbudget == 1)
+                style="background-color:#ca8256; color:black;"
+                @endif
 
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                
+            >
+                <td class="text-right {{$item->is_overbudget == 1 ?'is_overbudget':''}}" >{{$number++}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->name}}</td>
+                @if ($item->is_overbudget == 0)
+
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->unit}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->price}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">@currency($item->sub_amount).00</td>
+                @else
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}"></td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}"></td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}"></td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}"></td>
+                @endif
                
                 @if ($item->is_overbudget == 1)
                 @if ($item->is_add == 1)
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
-                <td>-</td>
-                <td>-</td>
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">@currency($item->sub_amount).00</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">@currency($item->sub_amount).00</td>
                 @else
-                <td>-</td>
-                <td>-</td>
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">@currency($item->sub_amount).00</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">@currency($item->sub_amount).00</td>
                 @endif
                 @else
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
+                    <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">-</td>
                 @endif
                 
-                <td>{{$item->is_add == 1 ? 'Betambah':'Berkurang'}}</td>   
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->is_add == 1 ? 'Betambah':'Berkurang'}}</td>   
                 
                 
                 
             </tr>
-            @else
-            <tr>
-                <td class="text-right">{{$number++}}</td>
-                <td>{{$item->name}}</td>
-
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-               
-                @if ($item->is_overbudget == 1)
-                @if ($item->is_add == 1)
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
-                <td>-</td>
-                <td>-</td>
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
-                @else
-                <td>-</td>
-                <td>-</td>
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
-                <td>{{$item->volume}}</td>
-                <td>@currency($item->sub_amount).00</td>
-                @endif
-                @else
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                @endif
-                
-                <td>{{$item->is_add == 1 ? 'Betambah':'Berkurang'}}</td>   
-                
-                
-                
-            </tr>
-            @endif
 
             @endforeach
 
