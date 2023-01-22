@@ -24,7 +24,7 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @foreach ($datas as $key => $value)
+                        @foreach ($isOverF as $key => $value)
                         <tr>
                             <td colspan="7">{{$key}}</td>
                         </tr>
@@ -88,7 +88,7 @@
                         <th></th>
                     </thead>
                     <tbody>
-                        @foreach ($datas as $key => $value)
+                        @foreach ($isOverT as $key => $value)
                         <tr>
                             <td colspan="7">{{$key}}</td>
                         </tr>

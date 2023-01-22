@@ -108,8 +108,19 @@ class RABController extends Controller
             ]);
 
 
-        $datas = DB::table('r_a_b_details')
+        $isOverbudgetTrue = DB::table('r_a_b_details')
         ->where('rab_id', $id)
+        ->where('is_overbudget', 1)
+        ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
+        ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
+        ->join('r_a_b_s', 'r_a_b_details.rab_id', '=', 'r_a_b_s.id')
+        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*','works.name as work_names','r_a_b_s.*')
+        ->get()
+        ->groupBy('category_name');
+
+        $isOverbudgetFalse = DB::table('r_a_b_details')
+        ->where('rab_id', $id)
+        ->where('is_overbudget', 0)
         ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
         ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
         ->join('r_a_b_s', 'r_a_b_details.rab_id', '=', 'r_a_b_s.id')
@@ -122,6 +133,8 @@ class RABController extends Controller
         return view('admin.rab.rabdetail.index', [
             'page_name' => 'Detail RAB',
             'datas' => $datas,
+            'isOverF' => $isOverbudgetFalse,
+            'isOverT' => $isOverbudgetTrue,
             'data' => $rab,
             'rab_id' => $id
         ]);
