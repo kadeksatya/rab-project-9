@@ -15,6 +15,8 @@ class RAB extends Model
         'project_date',
         'construction_service',
         'real_cost',
+        'rab_cost',
+        'cco_cost',
         'rounded_up_cost',
     ];
 

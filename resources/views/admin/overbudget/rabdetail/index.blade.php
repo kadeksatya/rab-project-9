@@ -30,16 +30,18 @@
                         </tr>
                         @foreach ($value as $item)
                         @php
+
                             $totals = $item->volume * $item->total_amount;
                             $jumlah_1 = 0;
                             $jumlah_1 += $totals;
-                            $jumlah_2 = $value->where('is_overbudget', 0)->sum('total_amount');
+                            $jumlah_2 = $item->rab_cost
+                            
                             
                         @endphp
                         @if ($item->is_overbudget == 0)
                         <tr>
                             <td></td>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->work_names}}</td>
                             <td>{{$item->volume}}</td>
                             <td>@currency($item->total_amount)</td>
                             <td>@currency($totals)</td>
@@ -57,11 +59,10 @@
                             <td></td>
                             <td><strong>Jumlah</strong></td>
                             <td>
-                                {{-- @currency($jumlah_2) --}}
                             </td>
                             <td>
-                                @if (isset($jumlah_1))
-                                    @currency($jumlah_1)
+                                @if (isset($jumlah_2))
+                                    @currency($jumlah_2)
                                 @endif
 
                             </td>
@@ -96,12 +97,12 @@
                             $totals_1 = $item->volume * $item->total_amount;
                             $jumlah_12 = 0;
                             $jumlah_12 += $totals;
-                            $jumlah_22 = $value->where('is_overbudget', 1)->sum('total_amount');
+                            $jumlah_22 = $item->cco_cost;
                         @endphp
                         @if ($item->is_overbudget == 1)
                         <tr>
                             <td></td>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->work_names}}</td>
                             <td>{{$item->volume}}</td>
                             <td>@currency($item->total_amount)</td>
                             <td>@currency($totals_1)</td>
@@ -145,12 +146,10 @@
                                 <strong>Jumlah</strong>
                             </td>
                             <td></td>
+                            
                             <td>
-                                {{-- @currency($jumlah_22) --}}
-                            </td>
-                            <td>
-                                @if (isset($jumlah_12))
-                                    @currency($jumlah_12)
+                                @if (isset($jumlah_22))
+                                    @currency($jumlah_22)
                                 @endif
 
                             </td>
@@ -188,7 +187,7 @@
                                 return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
                             }
                         }
-                            $real_cost = $data->real_cost;
+                            $real_cost = $data->rab_cost;
                             $total_construection = $data->construction_service / 100;
                             $sub_total = $real_cost * $total_construection;
                             $total = $real_cost + $sub_total;

@@ -89,6 +89,7 @@
             
             @foreach ($value as $item)
 
+
             <tr>
                 <td class="text-right">{{$number++}}</td>
                 <td>{{$item->name}}</td>
@@ -102,10 +103,18 @@
                 
             </tr>
             
-
+ 
             @endforeach
 
             @endforeach
+
+            <tr>
+                <td colspan="2"><strong>JUMLAH</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@currency($getDataRab)</td>
+            </tr>
 
             <tr>
                 <td width="70%" colspan="5 " class="text-right">
@@ -125,7 +134,7 @@
                             return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
                         }
                     }
-                        $real_cost = $data->real_cost;
+                        $real_cost = $getDataRab;
                         $total_construection = $data->construction_service / 100;
                         $sub_total = $real_cost * $total_construection;
                         $total = $real_cost + $sub_total;

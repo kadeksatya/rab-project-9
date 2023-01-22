@@ -41,6 +41,8 @@ class OverBudgetController extends Controller
 
             $totals = 0;
 
+            $real_costs = RABDetail::where('rab_id', $id)->where('is_overbudget', 1)->sum('sub_amount');
+
             $real_cost = RABDetail::where('rab_id', $id)
             ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
             ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
@@ -59,7 +61,9 @@ class OverBudgetController extends Controller
             RAB::whereId($id)->update([
                 'real_cost' => $totals,
                 'rounded_up_cost' => round($total),
-                'project_date' => $datas->project_date
+                'project_date' => $datas->project_date,
+                'rab_cost' => $datas->rab_cost,
+                'cco_cost' => $real_costs
                 
             ]);
 
@@ -67,7 +71,8 @@ class OverBudgetController extends Controller
         ->where('rab_id', $id)
         ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
         ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
-        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
+        ->join('r_a_b_s', 'r_a_b_details.rab_id', '=', 'r_a_b_s.id')
+        ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*','works.name as work_names','r_a_b_s.*')
         ->get()
         ->groupBy('category_name');
 
@@ -139,7 +144,9 @@ class OverBudgetController extends Controller
             RAB::whereId($request->rab_id)->update([
                 'real_cost' => $real_cost,
                 'rounded_up_cost' => round($total),
-                'project_date' => $datas->project_date
+                'project_date' => $datas->project_date,
+                'rab_cost' => $datas->rab_cost,
+                'cco_cost' => $datas->cco_cost,
 
             ]);
 

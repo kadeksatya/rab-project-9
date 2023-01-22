@@ -22,7 +22,7 @@
                 @if ($data != null)
                 <div class="form-group mb-2 work_category">
                     <label for="">Jenis Pekerjaan</label>
-                    <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
+                    <select name="work_category_id" id="WorkCategory" class="select2 work_category_input" style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($workcategory as $item)
                             <option value="{{$item->id}}" {{$item->id == $data->work_category_id ? 'selected':''}}>{{$item->name}}</option>
@@ -34,7 +34,7 @@
 
                 <div class="form-group mb-2 work">
                     <label for="">Nama Pekerjaan</label>
-                    <select name="work_id" id="WorkName" class="form-control work_input">
+                    <select name="work_id" id="WorkName" class="select2 work_input" style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($work as $item)
                             <option value="{{$item->id}}" data-category_id="{{$item->work_category_id}}" data-price="{{$item->total_amount}}" data-unit="{{$item->unit}}" {{$item->id == $data->work_id ? 'selected':''}}>{{$item->name}}</option>
@@ -44,7 +44,7 @@
                 @else
                 <div class="form-group mb-2 work_category">
                     <label for="">Jenis Pekerjaan</label>
-                    <select name="work_category_id" id="WorkCategory" class="form-control work_category_input">
+                    <select name="work_category_id" id="WorkCategory" class="select2 work_category_input" style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($workcategory as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
@@ -56,7 +56,7 @@
 
                 <div class="form-group mb-2 work">
                     <label for="">Nama Pekerjaan</label>
-                    <select name="work_id" id="WorkName" class="form-control work_input">
+                    <select name="work_id" id="WorkName" class="select2 work_input" style="width: 100%">
                         <option value="" selected disabled></option>
                         @foreach ($work as $item)
                             <option value="{{$item->id}}" data-category_id="{{$item->work_category_id}}" data-price="{{$item->total_amount}}" data-unit="{{$item->unit}}">{{$item->name}}</option>
@@ -69,16 +69,16 @@
 
                 <div class="form-group mb-2">
                     <label for="">Volume</label>
-                    <input type="text" class="form-control volume" name="volume" value="{{$data->volume ?? ''}}" placeholder="ex. pcs">
+                    <input type="text" required class="form-control volume" name="volume" value="{{$data->volume ?? ''}}" placeholder="ex. pcs">
                 </div>
 
                 <div class="form-group mb-2">
                     <label for="">Satuan</label>
-                    <input type="text" class="form-control unit" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
+                    <input type="text" required class="form-control unit" name="unit" value="{{$data->unit ?? ''}}" placeholder="ex. pcs">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Harga</label>
-                    <input type="number" readonly step="any" class="form-control price" name="price" value="{{$data->work->total_amount ?? 0}}" placeholder="ex. 0">
+                    <input type="number" required readonly step="any" class="form-control price" name="price" value="{{$data->work->total_amount ?? 0}}" placeholder="ex. 0">
                 </div>
                 <div class="form-group mb-2">
                     <label for="">Sub Total</label>
@@ -107,6 +107,10 @@
 
 @if ($data != null)
 <script>
+        $(document).ready(function () {
+        $(".select2").select2();
+    })
+
 
     $(function() {
         let unit = $(".unit");
@@ -153,7 +157,9 @@
 </script>  
 @else
 <script>
-
+        $(document).ready(function () {
+        $(".select2").select2();
+    })
     $(function() {
         let unit = $(".unit");
         let price = $(".price");

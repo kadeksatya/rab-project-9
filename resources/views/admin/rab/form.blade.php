@@ -34,7 +34,7 @@
 
                 <div class="form-group mb-2">
                     <label for="">Biaya Kontruksi</label>
-                    <input type="num" step="any" required class="form-control" required name="construction_service" value="{{$data->construction_service ?? ''}}" placeholder="ex . 1">
+                    <input type="num" step="any" required class="form-control" name="construction_service" value="{{$data->construction_service ?? ''}}" placeholder="ex . 1">
                 </div>
             </div>
         </div>
