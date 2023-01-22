@@ -41,7 +41,7 @@
                         @if ($item->is_overbudget == 0)
                         <tr>
                             <td></td>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->work_names}}</td>
                             <td>{{$item->volume}}</td>
                             <td>@currency($item->total_amount)</td>
                             <td>@currency($totals)</td>
@@ -102,7 +102,7 @@
                         @if ($item->is_overbudget == 1)
                         <tr>
                             <td></td>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->work_names}}</td>
                             <td>{{$item->volume}}</td>
                             <td>@currency($item->total_amount)</td>
                             <td>@currency($totals_1)</td>
@@ -187,7 +187,7 @@
                                 return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
                             }
                         }
-                            $real_cost = $data->real_cost;
+                            $real_cost = $data->rab_cost;
                             $total_construection = $data->construction_service / 100;
                             $sub_total = $real_cost * $total_construection;
                             $total = $real_cost + $sub_total;

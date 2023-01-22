@@ -22,6 +22,15 @@
 
                 @if ($data != null)
                 <div class="form-group mb-2 work_category">
+                    <label for="">Jenis CCO</label>
+                    <select name="is_add" class="form-control">
+                        <option value="" selected disabled></option>
+                        <option value="1" {{$data->is_add == 1 ? 'selected':''}}>Penambahan</option>
+                        <option value="0" {{$data->is_add == 0 ? 'selected':''}}>Pengurangan</option>
+                    </select>
+                </div>
+
+                <div class="form-group mb-2 work_category">
                     <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="WorkCategory" class="select2 work_category_input" style="width: 100%">
                         <option value="" selected disabled></option>
@@ -43,6 +52,14 @@
                     </select>
                 </div>
                 @else
+                <div class="form-group mb-2 work_category">
+                    <label for="">Jenis CCO</label>
+                    <select name="is_add" class="form-control">
+                        <option value="" selected disabled></option>
+                        <option value="1" >Penambahan</option>
+                        <option value="0" >Pengurangan</option>
+                    </select>
+                </div>
                 <div class="form-group mb-2 work_category">
                     <label for="">Jenis Pekerjaan</label>
                     <select name="work_category_id" id="WorkCategory" class="select2 work_category_input" style="width: 100%">
