@@ -69,7 +69,10 @@ class RABDetailController extends Controller
 
             RAB::whereId($request->rab_id)->update([
                 'real_cost' => $real_cost,
-                'rounded_up_cost' => round($total)
+                'rounded_up_cost' => round($total),
+                'project_date' => $datas->project_date,
+                'rab_cost' => $real_cost,
+                'cco_cost' => $datas->cco_cost
             ]);
 
             DB::commit();

@@ -62,7 +62,7 @@
         <hr>
     </center>
 
-    <p>Nama Proyek : <span><strong>{{$data->name}}</strong></span></p>
+    <p>Nama Proyek : <span><strong>{{$data->work_names}}</strong></span></p>
     <table class="table table-bordered border-dark" style="width: 100%">
         <thead>
             <th width="20px" rowspan="2">Nomor</th>
@@ -124,7 +124,7 @@
                 
             >
                 <td class="text-right {{$item->is_overbudget == 1 ?'is_overbudget':''}}" >{{$number++}}</td>
-                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->name}}</td>
+                <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->work_names}}</td>
                 @if ($item->is_overbudget == 0)
 
                 <td class="{{$item->is_overbudget == 1 ?'is_overbudget':''}}">{{$item->volume}}</td>
@@ -172,6 +172,21 @@
             @endforeach
 
             @endforeach
+            <tr>
+                <td colspan="2"><strong>JUMLAH</strong></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>@currency($total_rab_all)</td>
+                <td></td>
+                <td>@currency($add_cost)</td>
+                <td></td>
+                <td>@currency($min_cost)</td>
+                <td></td>
+                <td colspan="2">@currency($total_cco_all)</td>
+
+
+            </tr>
 
             <tr>
                 <td width="70%" colspan="11 " class="text-right">
@@ -182,7 +197,7 @@
                         <li>JUMLAH DIBULATKAN</li>
                     </ul>
                 </td>
-                <td>
+                <td colspan="2">
                     @php
                     if( !function_exists('ceiling') )
                     {
@@ -209,7 +224,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="11">
+                <td colspan="13">
                     <u><i><strong>Terbilang :</strong></i></u>
                     <p class="mt-2"><i class="text-capitalize">{{Terbilang::make($rounded)}}</i></p>
                 </td>

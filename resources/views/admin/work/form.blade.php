@@ -28,7 +28,7 @@
                 @if ($data != null)
                 <div class="form-group mb-2">
                     <label for="">Jenis Pekerjaan</label>
-                    <select name="work_category_id" id="" class="form-control" required>
+                    <select name="work_category_id" id="" class="form-control select2" style="width: 100%" required>
                         <option value="" selected disabled></option>
                         @foreach ($category as $item)
                             <option value="{{$item->id}}" {{$data->work_category_id == $item->id ? 'selected':''}}>{{$item->name}}</option>
@@ -38,7 +38,7 @@
                 @else
                 <div class="form-group mb-2">
                     <label for="">Jenis Pekerjaan</label>
-                    <select name="work_category_id" id="" class="form-control" required>
+                    <select name="work_category_id" id="" class="select2" style="width: 100%" required>
                         <option value="" selected disabled></option>
                         @foreach ($category as $item)
                             <option value="{{$item->id}}">{{$item->name}}</option>
@@ -62,3 +62,19 @@
     </div>
 </div>
 @endsection
+
+@push('style')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" />
+
+@endpush
+
+@push('script')
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".select2").select2();
+    })
+
+</script>
+@endpush

@@ -54,8 +54,7 @@ class HomeController extends Controller
         }
 
         $labels_rabTerr = $data_label_rabTeringgi;
-        $data_rabTertinggi = RAB::select('name',DB::raw("SUM(rounded_up_cost) as totals"))
-        ->groupBy('name')
+        $data_rabTertinggi = RAB::select('name','rab_cost as totals')
         ->get();
 
         $counts = $data_rabTertinggi->count();
