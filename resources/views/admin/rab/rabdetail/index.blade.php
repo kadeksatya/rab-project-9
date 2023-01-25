@@ -45,7 +45,18 @@
                             <td>@currency($item->price)</td>
                             <td>@currency($totals)</td>
                             <td>
-                                
+                                @if ($item->is_overbudget == 0)
+                                @include('components.btnactionlist', [
+                                    "is_detail" => false,
+                                    "is_edit" => true,
+                                    "is_print" => false,
+                                    "is_delete" => true,
+                                    "url_detail" => "",
+                                    "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
+                                    "url_delete" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/".$item->rab_id."/delete",
+                                ])
+                                @endif
+
 
                             </td>
                         </tr>
@@ -117,21 +128,7 @@
                                     </div>
                                 @endif
                             </td>
-                            <td>
-                                @if ($item->is_overbudget == 1)
-                                @include('components.btnactionlist', [
-                                    "is_detail" => false,
-                                    "is_edit" => true,
-                                    "is_print" => false,
-                                    "is_delete" => true,
-                                    "url_detail" => "",
-                                    "url_edit" => "/admin/cco/".$item->detail_id."/edit",
-                                    "url_delete" => "/admin/cco/".$item->detail_id."/".$item->rab_id."/delete",
-                                ])
-                                @endif
-
-
-                            </td>
+                            
                         </tr>
                         @endif
 
@@ -185,7 +182,7 @@
                                 return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
                             }
                         }
-                            $real_cost = $data->rab_cost;
+                            $real_cost = $data->rab_cost + $data->cco_cost;
                             $total_construection = $data->construction_service / 100;
                             $sub_total = $real_cost * $total_construection;
                             $total = $real_cost + $sub_total;

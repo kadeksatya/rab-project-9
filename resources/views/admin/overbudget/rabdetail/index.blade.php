@@ -187,7 +187,7 @@
                                 return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
                             }
                         }
-                            $real_cost = $data->rab_cost;
+                            $real_cost = $data->rab_cost + $data->cco_cost;
                             $total_construection = $data->construction_service / 100;
                             $sub_total = $real_cost * $total_construection;
                             $total = $real_cost + $sub_total;
