@@ -1,5 +1,5 @@
 
-
+@if (Auth::user()->role_id == 1)
 <div class="dropdown show">
     <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Action
@@ -21,3 +21,4 @@
         @endif
     </div>
 </div>
+@endif
