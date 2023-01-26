@@ -45,7 +45,7 @@
                             <td>@currency($item->price)</td>
                             <td>@currency($totals)</td>
                             <td>
-                                @if (Auth::user()->role_id == 2)
+                                @if (Auth::user()->role_id == 1)
                                 @if ($item->is_overbudget == 0)
                                 @include('components.btnactionlist', [
                                     "is_detail" => false,
