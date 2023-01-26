@@ -33,7 +33,7 @@ class HomeController extends Controller
             $month[] = date('Y', mktime(0,0,0,1, 1, $m));
 
             $datas_pertahun = RAB::select(DB::raw("COUNT(*) as totals"))
-                ->whereYear('created_at', $m)
+                ->whereYear('project_date', $m)
                 ->groupBy(DB::raw("YEAR(created_at)"))
                 ->first();
 
