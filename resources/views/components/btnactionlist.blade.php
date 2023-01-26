@@ -22,3 +22,16 @@
     </div>
 </div>
 @endif
+
+@if (Auth::user()->role_id == 2)
+<div class="dropdown show">
+    <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Action
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        @if ($is_print == true)
+        <a href="{{$url_print}}" class="dropdown-item" target="_blank"><i class="fa fa-print mr-1"></i> Print</a>
+        @endif
+    </div>
+</div>
+@endif
