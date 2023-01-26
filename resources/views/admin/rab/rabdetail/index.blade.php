@@ -45,6 +45,7 @@
                             <td>@currency($item->price)</td>
                             <td>@currency($totals)</td>
                             <td>
+                                @if (Auth::user()->role_id == 2)
                                 @if ($item->is_overbudget == 0)
                                 @include('components.btnactionlist', [
                                     "is_detail" => false,
@@ -55,6 +56,7 @@
                                     "url_edit" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/edit",
                                     "url_delete" => "/admin/rab/rabs/rabsdetail/".$item->detail_id."/".$item->rab_id."/delete",
                                 ])
+                                @endif
                                 @endif
 
 

@@ -118,6 +118,7 @@
                                 @endif
                             </td>
                             <td>
+                                @if (Auth::user()->role_id == 2)
                                 @if ($item->is_overbudget == 1)
                                 @include('components.btnactionlist', [
                                     "is_detail" => false,
@@ -128,6 +129,7 @@
                                     "url_edit" => "/admin/cco/".$item->detail_id."/edit",
                                     "url_delete" => "/admin/cco/".$item->detail_id."/".$item->rab_id."/delete",
                                 ])
+                                @endif
                                 @endif
 
 

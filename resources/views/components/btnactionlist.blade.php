@@ -29,6 +29,9 @@
       Action
     </a>
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        @if ($is_detail == true)
+        <a href="{{$url_detail}}" class="dropdown-item"><i class="far fa-eye"></i> Detail</a>
+        @endif
         @if ($is_print == true)
         <a href="{{$url_print}}" class="dropdown-item" target="_blank"><i class="fa fa-print mr-1"></i> Print</a>
         @endif
