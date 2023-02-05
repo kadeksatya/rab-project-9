@@ -105,7 +105,9 @@ class OverBudgetController extends Controller
        $b1 = RABDetail::where('is_add', 0)
        ->where('is_overbudget', 1)->sum('sub_amount');
 
-       $total_semuanya = $a1 - $b1;
+       $total_semuanya = $a1 ?? 0 - $b1 ?? 0;
+
+       
 
 
         $rab = RAB::whereId($id)->first();

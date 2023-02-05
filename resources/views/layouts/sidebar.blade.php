@@ -65,6 +65,14 @@
                             </a>
                         </li>
                         @endif
+                        <li class="nav-item dropdown open">
+                            <a class="dropdown-toggle" href="/admin/cco">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-area-chart"></i>
+                                </span>
+                                <span class="title">Change Contract Order</span>
+                            </a>
+                        </li>
                         @if (Auth::user()->role_id == 1)
 
                         <li class="nav-item dropdown open">
@@ -78,14 +86,7 @@
                         @endif
 
 
-                        <li class="nav-item dropdown open">
-                            <a class="dropdown-toggle" href="/admin/cco">
-                                <span class="icon-holder">
-                                    <i class="anticon anticon-area-chart"></i>
-                                </span>
-                                <span class="title">Change Contract Order</span>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
