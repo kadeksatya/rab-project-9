@@ -21,6 +21,9 @@ class RolesSeeder extends Seeder
             ],
             1 => [
                 'name' => 'Direktur'
+            ],
+            2 => [
+                'name' => 'Accounting'
             ]
         ]);
     }

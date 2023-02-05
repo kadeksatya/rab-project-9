@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\RAB;
 use App\Models\RABDetail;
+use App\Models\UploadLaporan;
 use App\Models\WorkType;
+use App\Uploads\Documents;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
 
 class RABController extends Controller
@@ -128,7 +131,16 @@ class RABController extends Controller
         ->get()
         ->groupBy('category_name');
 
+        $a1 = RABDetail::where('is_add', 1)
+        ->where('is_overbudget', 1)->sum('sub_amount');
+ 
+        $b1 = RABDetail::where('is_add', 0)
+        ->where('is_overbudget', 1)->sum('sub_amount');
+ 
+        $total_semuanya = $a1 - $b1;
+
         $rab = RAB::whereId($id)->first();
+
 
         return view('admin.rab.rabdetail.index', [
             'page_name' => 'Detail RAB',
@@ -136,10 +148,52 @@ class RABController extends Controller
             'isOverF' => $isOverbudgetFalse,
             'isOverT' => $isOverbudgetTrue,
             'data' => $rab,
-            'rab_id' => $id
+            'rab_id' => $id,
+            'total_semuanya' => $total_semuanya,
         ]);
     }
 
+
+    public function uploadDocument(Request $request, $id)
+    {
+        $doc = $request->file('files');
+
+        if($doc != ' '){
+          $docs =  Documents::upload($doc);
+        }else{
+            $docs = null;
+        }
+
+        UploadLaporan::create([
+            'document' => $docs,
+            'rab_id' => $id,
+            'name' => $request->name,
+        ]);
+
+       return redirect()->back()->with('message', 'Upload Sukses');
+
+    }
+
+    public function changeStatusDoc(Request $request, $id)
+    {
+
+        UploadLaporan::whereId($id)->update([
+            'status' => $request->status,
+        ]);
+
+       return redirect()->back()->with('message', 'Update Status Berhasil');
+
+    }
+
+    public function previewLaporan($id)
+    {
+        $files = UploadLaporan::whereId($id)->first();
+        //PDF file is stored under project/public/download/info.pdf
+
+        return response()->file(
+            storage_path('/app/public/document/'). $files->document
+        );
+    }
 
         /**
      * Display the specified resource.
@@ -271,6 +325,22 @@ class RABController extends Controller
     
        return response([
         'message' => 'Data successfully deleted !'
+       ]);
+
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\RAB  $RAB
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyDocument($id)
+    {
+       UploadLaporan::whereId($id)->delete();
+    
+       return response([
+        'message' => 'Data berhasil dihapus !'
        ]);
 
     }

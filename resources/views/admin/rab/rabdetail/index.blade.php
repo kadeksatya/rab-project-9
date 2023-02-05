@@ -108,6 +108,7 @@
                         @foreach ($value as $item)
                         @php
                             $totals_1 = $item->volume * $item->total_amount;
+                    
                             $jumlah_12 = 0;
                             $jumlah_12 += $totals;
                             $jumlah_22 = $item->cco_cost
@@ -145,9 +146,9 @@
                             <td></td>
                             
                             <td>
-                                @if (isset($jumlah_22))
-                                    @currency($jumlah_22)
-                                @endif
+                                @if (isset($total_semuanya))
+                                @currency($total_semuanya)
+                            @endif
 
                             </td>
                             <td></td>
@@ -184,7 +185,7 @@
                                 return ( is_numeric($number) && is_numeric($significance) ) ? (ceil($number/$significance)*$significance) : false;
                             }
                         }
-                            $real_cost = $data->rab_cost + $data->cco_cost;
+                            $real_cost = $data->rab_cost + $total_semuanya;
                             $total_construection = $data->construction_service / 100;
                             $sub_total = $real_cost * $total_construection;
                             $total = $real_cost + $sub_total;

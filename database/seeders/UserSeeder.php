@@ -31,6 +31,14 @@ class UserSeeder extends Seeder
                 'email' => 'direktur@gmail.com',
                 'role_id'=> 2
             ],
+
+            2 => [
+                'name' => 'Akunting',
+                'username' => 'accounting',
+                'password' => Hash::make('password'),
+                'email' => 'accounting@gmail.com',
+                'role_id'=> 3
+            ],
         ]);
     }
 }
