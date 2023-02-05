@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('work_id');
             $table->integer('type_data');
             $table->integer('value_id');
+            $table->integer('is_add')->default(1);
             $table->double('koefisien', 16, 2);
             $table->string('unit', 100);
             $table->double('price', 16, 2);            
