@@ -119,6 +119,10 @@ Route::prefix('admin')->middleware('auth:web')->group(function(){
         Route::delete('rabs/{id}/delete', [RABController::class, 'destroy']);
         Route::get('rabs/{id}/detail', [RABController::class, 'show']);
         Route::get('rabs/{id}/print', [RABController::class, 'print']);
+        Route::post('rabs/{id}/uploadDocument', [RABController::class, 'uploadDocument'])->name('rabs.uploads');
+        Route::post('rabs/{id}/changeStatusDoc', [RABController::class, 'changeStatusDoc'])->name('rabs.changestatus');
+        Route::get('rabs/{id}/previewLaporan', [RABController::class, 'previewLaporan'])->name('rabs.downloads');
+        Route::delete('rabs/{id}/deleteUploads', [RABController::class, 'destroyDocument'])->name('rabs.deleteDoc');
 
         Route::prefix('rabs')->group(function(){
             Route::post('rabsdetail', [RABDetailController::class, 'store']);

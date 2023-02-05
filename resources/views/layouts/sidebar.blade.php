@@ -34,7 +34,7 @@
                             </ul>
                         </li>
                         @endif
-
+                        @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
                         <li class="nav-item dropdown">
                             <a class="dropdown-toggle" href="javascript:void(0);">
                                 <span class="icon-holder">
@@ -54,6 +54,8 @@
                                 </li>
                             </ul>
                         </li>
+                        @endif
+                        @if (Auth::user()->role_id == 2)
                         <li class="nav-item dropdown open">
                             <a class="dropdown-toggle" href="/admin/cco">
                                 <span class="icon-holder">
@@ -62,6 +64,7 @@
                                 <span class="title">Change Contract Order</span>
                             </a>
                         </li>
+                        @endif
                         @if (Auth::user()->role_id == 1)
 
                         <li class="nav-item dropdown open">
@@ -70,6 +73,18 @@
                                     <i class="anticon anticon-team"></i>
                                 </span>
                                 <span class="title">Users Management</span>
+                            </a>
+                        </li>
+                        @endif
+
+                        @if (Auth::user()->role_id == 3)
+
+                        <li class="nav-item dropdown open">
+                            <a class="dropdown-toggle" href="/admin/cco">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-area-chart"></i>
+                                </span>
+                                <span class="title">Change Contract Order</span>
                             </a>
                         </li>
                         @endif

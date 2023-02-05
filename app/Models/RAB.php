@@ -12,6 +12,7 @@ class RAB extends Model
 
     protected $fillable = [
         'name',
+        'document',
         'project_date',
         'construction_service',
         'real_cost',

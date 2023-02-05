@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\RAB;
 use App\Models\RABDetail;
+use App\Models\UploadLaporan;
 use App\Models\Work;
 use App\Models\WorkType;
 use Illuminate\Http\Request;
@@ -85,6 +86,7 @@ class OverBudgetController extends Controller
         ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*','works.name as work_names','r_a_b_s.*')
         ->get()
         ->groupBy('category_name');
+        
 
         $isOverbudgetFalse = DB::table('r_a_b_details')
         ->where('rab_id', $id)
@@ -96,7 +98,20 @@ class OverBudgetController extends Controller
         ->get()
         ->groupBy('category_name');
 
+
+        $a1 = RABDetail::where('is_add', 1)
+       ->where('is_overbudget', 1)->sum('sub_amount');
+
+       $b1 = RABDetail::where('is_add', 0)
+       ->where('is_overbudget', 1)->sum('sub_amount');
+
+       $total_semuanya = $a1 - $b1;
+
+
         $rab = RAB::whereId($id)->first();
+
+        $listLaporan = UploadLaporan::where('rab_id',$rab->id)->get();
+
 
         return view('admin.overbudget.rabdetail.index', [
             'page_name' => 'Detail RAB',
@@ -104,7 +119,10 @@ class OverBudgetController extends Controller
             'isOverF' => $isOverbudgetFalse,
             'isOverT' => $isOverbudgetTrue,
             'data' => $rab,
-            'rab_id' => $id
+            'rab_id' => $id,
+            'total_semuanya' => $total_semuanya,
+            'files' => $listLaporan
+
         ]);
     }
 
