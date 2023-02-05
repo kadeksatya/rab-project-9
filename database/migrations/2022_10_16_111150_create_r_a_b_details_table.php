@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('rab_id');
             $table->integer('work_category_id');
             $table->integer('work_id');
+            $table->integer('is_add')->default(1);
             $table->double('volume', 16, 2 )->default(0);
             $table->string('unit', 100);
             $table->double('price', 16, 2 )->default(0);
