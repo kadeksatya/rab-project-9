@@ -77,7 +77,6 @@
                         </li>
                         @endif
 
-                        @if (Auth::user()->role_id == 3)
 
                         <li class="nav-item dropdown open">
                             <a class="dropdown-toggle" href="/admin/cco">
@@ -87,7 +86,6 @@
                                 <span class="title">Change Contract Order</span>
                             </a>
                         </li>
-                        @endif
                     </ul>
                 </div>
             </div>
