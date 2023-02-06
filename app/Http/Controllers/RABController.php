@@ -132,9 +132,11 @@ class RABController extends Controller
         ->groupBy('category_name');
 
         $a1 = RABDetail::where('is_add', 1)
+        ->where('rab_id', $id)
         ->where('is_overbudget', 1)->sum('sub_amount');
  
         $b1 = RABDetail::where('is_add', 0)
+        ->where('rab_id', $id)
         ->where('is_overbudget', 1)->sum('sub_amount');
  
         $total_semuanya = $a1 - $b1;

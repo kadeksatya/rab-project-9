@@ -100,12 +100,14 @@ class OverBudgetController extends Controller
 
 
         $a1 = RABDetail::where('is_add', 1)
+        ->where('rab_id', $id)
        ->where('is_overbudget', 1)->sum('sub_amount');
 
        $b1 = RABDetail::where('is_add', 0)
+       ->where('rab_id', $id)
        ->where('is_overbudget', 1)->sum('sub_amount');
 
-       $total_semuanya = $a1 ?? 0 - $b1 ?? 0;
+       $total_semuanya = $a1  - $b1 ;
 
        
 
@@ -242,7 +244,7 @@ class OverBudgetController extends Controller
             'data' => $data,
             'workcategory' => $workcategory,
             'work' => $work,
-            'rab_id' => $id
+            'rab_id' => $data->rab_id
         ]);
     }
 
