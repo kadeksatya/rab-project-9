@@ -145,16 +145,10 @@ class RABDetailController extends Controller
             RABDetail::whereId($id)->update($form);
             $datas = RABDetail::find($id);
 
-            $sum = RABDetail::where('work_id', $datas->work_id)->sum('sub_amount');
-
-
-            Work::whereId($datas->work_id)->update([
-                'total_amount' => $sum
-            ]);
             DB::commit();
 
 
-            return redirect('/admin/rab/rabs/'.$datas->work_id.'/detail')->with('message', 'Data successfully created');
+            return redirect('/admin/rab/rabs/'.$datas->rab_id.'/detail')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;

@@ -131,7 +131,12 @@
         $(".select2").select2();
     })
 
+    $('#WorkName').trigger('change');
+
+
+  
     $(function() {
+        
         let unit = $(".unit");
         let price = $(".price");
 
@@ -142,12 +147,14 @@
     $select1.on('change', function() {
     var size = $(this).find("option:selected").val();
     $select2.html($options.filter('[data-category_id="' + size + '"]'));
-    $select2.val($select2.find("option:first").val());
+    $select2.val($select2.find("option:selected").val());
 
     price.val($select2.find("option:selected").data('price'))
     unit.val($select2.find("option:selected").data('unit'))
     //$select2.val("");
     }).trigger('change');
+
+
 
 
     $select2.change(function (e) { 

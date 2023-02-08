@@ -106,7 +106,7 @@
                         </tr>
                         @foreach ($value as $item)
                         @php
-                        $totals_1 = $item->volume * $item->total_amount;
+                        $totals_1 = $item->volume * $item->price;
                         $jumlah_12 = 0;
                         $jumlah_12 += $totals;
                         $jumlah_22 = $item->cco_cost;
@@ -116,7 +116,7 @@
                             <td></td>
                             <td>{{$item->work_names}}</td>
                             <td>{{$item->volume}}</td>
-                            <td>@currency($item->total_amount)</td>
+                            <td>@currency($item->price)</td>
                             <td>@currency($totals_1)</td>
                             <td>
                                 @if ($item->is_add == 1)

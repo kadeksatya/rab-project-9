@@ -37,8 +37,37 @@ class OverBudgetController extends Controller
      */
     public function show($id)
     {
-        $rab = RAB::whereId($id)->first();
-        
+
+        $datas = RAB::whereId($id)->first();
+
+            $totals = 0;
+
+            $real_costs = RABDetail::where('rab_id', $id)->where('is_overbudget', 1)->sum('sub_amount');
+
+            $real_cost = RABDetail::where('rab_id', $id)
+            ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
+            ->join('works', 'r_a_b_details.work_id', '=', 'works.id')
+            ->select('work_types.name as category_name','r_a_b_details.*','r_a_b_details.id as detail_id','works.*')
+            ->get();
+
+            foreach ($real_cost as $item) {
+                $totals += $item->volume * $item->price;
+            }
+
+
+            $construction_service = ($datas->construction_service / 100) * $totals;
+
+            $total = $construction_service + $totals;
+
+            RAB::whereId($id)->update([
+                'real_cost' => $totals,
+                'rounded_up_cost' => round($total),
+                'project_date' => $datas->project_date,
+                'rab_cost' => $datas->rab_cost,
+                'cco_cost' => $real_costs
+                
+            ]);
+
         $datas = DB::table('r_a_b_details')
         ->where('rab_id', $id)
         ->join('work_types', 'r_a_b_details.work_category_id', '=', 'work_types.id')
@@ -72,13 +101,19 @@ class OverBudgetController extends Controller
 
         $a1 = RABDetail::where('is_add', 1)
         ->where('rab_id', $id)
-        ->where('is_overbudget', 1)->sum('sub_amount');
+       ->where('is_overbudget', 1)->sum('sub_amount');
 
-        $b1 = RABDetail::where('is_add', 0)
-        ->where('rab_id', $id)
-        ->where('is_overbudget', 1)->sum('sub_amount');
+       $b1 = RABDetail::where('is_add', 0)
+       ->where('rab_id', $id)
+       ->where('is_overbudget', 1)->sum('sub_amount');
 
-        $total_semuanya = $a1  - $b1 ;
+       $total_semuanya = $a1  - $b1 ;
+
+       
+
+
+        $rab = RAB::whereId($id)->first();
+
         $listLaporan = UploadLaporan::where('rab_id',$rab->id)->get();
 
 
@@ -229,11 +264,10 @@ class OverBudgetController extends Controller
 
             RABDetail::whereId($id)->update($form);
             $datas = RABDetail::find($id);
-
             DB::commit();
 
 
-            return redirect('/admin/cco/'.$datas->work_id.'/detail')->with('message', 'Data successfully created');
+            return redirect('/admin/cco/'.$datas->rab_id.'/detail')->with('message', 'Data successfully created');
 
         } catch (\Throwable $th) {
             //throw $th;
