@@ -193,7 +193,7 @@ class RABController extends Controller
         //PDF file is stored under project/public/download/info.pdf
 
         return response()->file(
-            storage_path('/app/public/document/'). $files->document
+            storage_path('app/public/document/'). $files->document
         );
     }
 

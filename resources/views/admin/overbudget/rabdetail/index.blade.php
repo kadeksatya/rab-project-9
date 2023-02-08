@@ -248,6 +248,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if (Auth::user()->role_id == 3)
                 <form action="{{route('rabs.uploads', $rab_id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -260,6 +261,7 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Save changes</button>
                 </form>
+                @endif
 
                     <hr>
                     <table class="table table-bordered">
@@ -289,10 +291,12 @@
                                 @endif
                             </td>
                             <td>
+                                @if (Auth::user()->role_id == 3)
                                 <button class="btn btn-danger delete-item" type="button"
                                     data-url="{{route('rabs.deleteDoc', $item->id)}}"> <i class="fa fa-trash"></i>
                                 </button>
-                                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
+                                @endif
+                                @if (Auth::user()->role_id == 2)
                                 <button class="btn btn-primary updateStatus" type="button"
                                 data-url="{{route('rabs.changestatus', $item->id)}}"
                                 data-status = {{$item->status}}
